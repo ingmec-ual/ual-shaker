@@ -13,19 +13,23 @@ numIncr=500;
 q_t =zeros(4,numIncr+1);
 qp_t =zeros(4,numIncr+1);
 qpp_t =zeros(4,numIncr+1);
-%Crea la figura que contendra la animacion
+%Crea la figura que contendra la animacion
 fig1=figure(1);
 hold on;
-axis([-L1-L2-2,2,-L1-2,L1+2]); %Establece los lmites [xmin,xmax,ymin,ymax]
+axis([-L1-L2-2,2,-L1-2,L1+2]); %Establece los limites [xmin,xmax,ymin,ymax]
 axis manual; %Congela los limites anteriores
 axis off %Elimina el dibujo de los ejes
-%Bucle de animacion
+%Bucle de animacioon
 
 for i=0:numIncr
 angDato=2*pi*(i/numIncr);
 q = ProbPosicion (q,L1,L2);
-qp = ProbVelocidad (q);
-qpp = ProbAceleracion (q);
+
+% TODO: set "omega" to the desired ang vel
+qp = ProbVelocidad (q, omega, L1,L2);
+
+% TODO: set "alpha" to the desired ang accel
+qpp = ProbAceleracion (q,qp, alpha, L1,L2);
 DibujaMecanismo;
 %Almacena informacion
 q_t (:,i+1)=q;

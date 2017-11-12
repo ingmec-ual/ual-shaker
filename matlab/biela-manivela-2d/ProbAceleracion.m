@@ -1,11 +1,12 @@
-%Resuelve el problema de aceleracion
-function qpp = ProbAceleracion (q)
+%Resuelve el problema de aceleracion
+function qpp = ProbAceleracion (q,qp, alpha, L1,L2)
 
 %Inicializa las variables
 b =zeros(5,1);
 %Extrae las velocidades
 x1p=qp(1); y1p=qp(2);
 x2p=qp(3); thetap=qp(4);
+% Aqui es thetap, abajo angp (!!!???)
 
 %Calcula el producto fiqp*qp
 b(1) = 2*x1p^2 + 2*y1p^2;
