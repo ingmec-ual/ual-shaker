@@ -1,6 +1,6 @@
 %Dibuja el mecanismo
 function DibujaMecanismo
-global q;
+
 %Limpia la pantalla
 cla;
 %Extrae los 3 puntos moviles del cuadrilatero
