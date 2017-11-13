@@ -23,7 +23,7 @@ axis off %Elimina el dibujo de los ejes
 
 for i=0:numIncr
 angDato=2*pi*(i/numIncr);
-q = ProbPosicion (q,L1,L2);
+q = ProbPosicion (q,angDato, L1,L2);
 
 % TODO: set "omega" to the desired ang vel
 qp = ProbVelocidad (q, omega, L1,L2);
