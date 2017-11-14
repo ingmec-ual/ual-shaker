@@ -9,6 +9,6 @@ P(2)=(x1-x2)^2+(y1-y2)^2-L2^2;
 
 if (abs (tan(theta))> 0.17) %viene de hacer la tangente de pi/18, es decir 10 grados
     P(3)=(x1-xA)-L1*cos(theta);
-    else
+else
     P(3)=(y1-yA)-L1*sin(theta);
 end

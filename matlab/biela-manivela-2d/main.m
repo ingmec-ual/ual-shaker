@@ -21,7 +21,7 @@ axis manual; %Congela los limites anteriores
 axis off %Elimina el dibujo de los ejes
 %Bucle de animacion
 
-for i=0:numIncr
+for i=1:numIncr
 
 theta=2*pi*(i/numIncr);
 q = ProbPosicion (q,theta,L1,L2);
