@@ -1,20 +1,17 @@
+%function [] = beca(L1,L2, haz_dibujo)
 
 clear; close all; clc;
-
-% Si queremos ver la simuación cinemática del mecanismo debemos introducir
-% haz_dibujo=1;
 haz_dibujo = 0;
 
 % parametros fijos del mecanismo
 params = struct();
-params.L1 =5; % cm
-params.L2 =10; % cm
+params.L1 =L1; % cm
+params.L2 =L2; % cm
 params.y2=2;
 params.omega = 1; % rad/s
 params.alpha = 0; % rad/s^2
 
-% Introducimos las coordenadas iniciales del vector posición (valores
-% aleatorios aunque elegidos con cierto criterio)
+% Introducimos las coordenadas iniciales del vector posición
 x1 = params.L1;
 y1 = params.L1*0.05;
 x2 = params.L1-params.L2;
@@ -45,10 +42,6 @@ At = 0.005;
 % inicializamos un vector columna de las coordenadas que varían
 N = 1024;
 x1=zeros(N,1); y1=zeros(N,1); x2=zeros(N,1); theta=zeros(N,1); t=zeros(N,1);
-
-Vx2=zeros(N,1); %Creamos la matriz de tendrá las velocidades del punto 2
-
-
 %iteramos para representar el mecanismo
 %secuencia_theta=load('nombre.txt');
 secuencia_theta=linspace(0,2*pi,N);
@@ -65,7 +58,6 @@ for i=1:length(secuencia_theta),
         drawnow
     end
     x1(i)=q(1); y1(i)=q(2); x2(i)=q(3); theta(i)=q(4); t(i)=(i-1)*At;
-    Vx2(i)=v(3);
 end
 % Hacemos una gráfica doble con la evolucion de las coordenadas del punto 1
 figure;
@@ -85,20 +77,4 @@ fprintf('x1=%f, y1=%f, x2=%f, theta=%f\n',q(1),q(2),q(3),q(4))
 fprintf('vx1=%f, vy1=%f, vx2=%f, omega=%f\n',v(1),v(2),v(3),v(4))
 fprintf('ax1=%f, ay1=%f, ax2=%f, alpha=%f\n',a(1),a(2),a(3),a(4))
 
-
-%Vamos a realizar las gráficas necesarias
-
-%En este caso tenemos la velocidaddex2/omega frente a theta
-figure;
-plot(rad2deg(secuencia_theta),(Vx2/params.omega));
-legend('Vx_2/w');
-xlabel('th (deg)'); ylabel('Vx2/w (cm)');
-title('Velocidad del punto 2/ omega frente a theta')
-
-%theta frente al tiempo
-figure;
-plot(t,theta);
-legend('theta/w');
-xlabel('t(s)'); ylabel('theta(rad)');
-title('theta frente al tiempo')
-
+%end

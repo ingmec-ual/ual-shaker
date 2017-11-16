@@ -23,11 +23,10 @@ J(2,3)=-2*(x1-x2);
 J(2,4)=0;
 J(3,3)=0;
 
-if (abs(sin(theta))>0.7)
+if (abs(sin(theta))>0.9)
     J(3,1)=1;
     J(3,2)=0;
     J(3,4)=params.L1*sin(theta);
-
 else
     J(3,1)=0;
     J(3,2)=1;

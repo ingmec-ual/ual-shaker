@@ -88,17 +88,17 @@ fprintf('ax1=%f, ay1=%f, ax2=%f, alpha=%f\n',a(1),a(2),a(3),a(4))
 
 %Vamos a realizar las gráficas necesarias
 
-%En este caso tenemos la velocidaddex2/omega frente a theta
+%Consigna
 figure;
 plot(rad2deg(secuencia_theta),(Vx2/params.omega));
 legend('Vx_2/w');
 xlabel('th (deg)'); ylabel('Vx2/w (cm)');
-title('Velocidad del punto 2/ omega frente a theta')
+title('Evolucion de las coordenadas del punto 2')
 
-%theta frente al tiempo
+%En este caso tenemos la velocidaddex2/omega frente a theta
 figure;
-plot(t,theta);
-legend('theta/w');
-xlabel('t(s)'); ylabel('theta(rad)');
-title('theta frente al tiempo')
+plot(rad2deg(secuencia_theta),(x2));
+legend('x_2/w');
+xlabel('th (deg)'); ylabel('x2 (cm/s)');
+title('Velocidad del punto 2/ ')
 
