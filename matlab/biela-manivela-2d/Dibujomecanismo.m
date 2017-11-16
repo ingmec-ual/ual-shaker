@@ -1,4 +1,4 @@
-function [] = Dibujomecanismo( q )
+function [] = Dibujomecanismo( q, params )
 %Definimos valores limite de x e y de la gráfica
 
 %Definimos las coordenadas generalizadas
@@ -9,7 +9,7 @@ theta=q(4);
 %Definimos las coordenadas que no varían(fijas)
 xA=0;
 yA=0;
-y2=0;
+y2=params.y2;
 %Dibujamos nuestro mecanismo, en este caso, 2 barras, ya que tenemos un
 %biela manivela
 line([xA,x1],[yA,y1])

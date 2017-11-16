@@ -3,15 +3,22 @@ clear; close all; clc;
 x1 = -5/2;
 y1 = 5*sqrt(3)/2;
 x2 = -(5+5*sqrt(13))/2;
-y2=0;
 theta = 2*pi/3;
+
+% parametros fijos del mecanismo
+params = struct();
+params.L1 = 4; % cm
+params.L2 = 10; % cm
+params.y2=2;
+params.omega = 10; % rad/s
+params.alpha = 0; % rad/s^2
 
 % Formamos el vector de coordenadas generalizadas
 q = [x1; y1; x2; theta];
 
 % Hacemos los problemas de velocidad y aceleracion iniciales
-v = probvelocidad(q);
-a = probaceleracion(v,q);
+v = probvelocidad(q,params);
+a = probaceleracion(v,q,params);
 % % Escribimos los resultados
 % fprintf('En el instante inicial:\n')
 % fprintf('Vector posición inicial:\n x1=%f, y1=%f, x2=%f, theta=%f\n',q(1),q(2),q(3),q(4))
@@ -24,19 +31,20 @@ a = probaceleracion(v,q);
 figure
 xlim([-20,10])
 ylim([-20,10])
+grid minor;
 At = 0.005;
 % inicializamos un vector columna de las coordenadas que varían
 x1=zeros(100,1); y1=zeros(100,1); x2=zeros(100,1); theta=zeros(100,1); t=zeros(100,1);
 %iteramos para representar el mecanismo
 % secuencia_theta=load('nombre.txt');
 for i=1:1000
-q(4)=q(4) + v(4)*At; 
+q(4)=q(4) + params.omega*At; 
 % q(4)=secuencia_theta(i); 
-q = ProbPosicion(q);
-v = probvelocidad(q);
-a = probaceleracion(v,q);
+q = ProbPosicion(q,params);
+v = probvelocidad(q,params);
+a = probaceleracion(v,q,params);
 cla
-Dibujomecanismo(q)
+Dibujomecanismo(q,params)
 title('Simulación cinemática')
 drawnow
 x1(i)=q(1); y1(i)=q(2); x2(i)=q(3); theta(i)=q(4); t(i)=(i-1)*At;
