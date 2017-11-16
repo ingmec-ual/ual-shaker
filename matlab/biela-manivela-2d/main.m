@@ -95,6 +95,14 @@ legend('Vx_2/w');
 xlabel('th (deg)'); ylabel('Vx2/w (cm)');
 title('Velocidad del punto 2/ omega frente a theta')
 
+figure;
+plot(rad2deg(secuencia_theta),(abs(Vx2)/params.omega));
+legend('Vx_2/w');
+xlabel('th (deg)'); ylabel('Vx2/w (cm)');
+title('Valor absoluto de la Velocidad del punto 2/ omega frente a theta')
+
+
+
 %theta frente al tiempo
 figure;
 plot(t,theta);
