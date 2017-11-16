@@ -1,17 +1,18 @@
-%Resuelve el problema de posicion
-function q = ProbPosicion (q,omega,L1,L2)
-
-%Inicializa las variables
+function q = ProbPosicion (q)
+%Inicializamos las variables
 error = 1e10;
-epsilon = 1e-10;
-deltaQ = zeros(4,1);
-fi = zeros(4,1);
-q(4)=omega;
-%Bucle hasta que el error sea menor que la tolerancia
-while (error > epsilon),
-fi = phi(q,L1,L2);
-J=phiq(q,L1,L2);
-deltaQ =-[J; 0 0 0 1]\[fi;0]; %Calcula la variacion de q
-q = q+deltaQ; %Actualiza las posiciones
-error = norm(deltaQ); %Calcula el error
-end
+epsilon = 1e-10; %tolerancia
+iter = 0; 
+iterMax = 50; 
+
+% Creamos un bucle hasta que el error sea menor que la tolerancia
+while (error > epsilon && iter < iterMax),
+    %Calcula los residuos
+    phi = restricciones(q);
+    phiq = jacob(q);
+    deltaQ = -[phiq; 0 0 0 1] \ [phi;0]; %Calcula la variacion de q
+    q = q+deltaQ; %Actualiza las posiciones
+    error = norm(deltaQ); %Calcula el error
+    iter = iter+1;
+end 
+end 

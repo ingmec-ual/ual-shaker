@@ -1,47 +1,60 @@
-%Programa principal
-%Limpia la memoria
-clear;
-%Inicializa variables q, qp (=q_prima) y qpp (=q_segunda)
+clear; close all; clc;
+% Introducimos las coordenadas iniciales del vector posición
+x1 = -5/2;
+y1 = 5*sqrt(3)/2;
+x2 = -(5+5*sqrt(13))/2;
+y2=0;
+theta = 2*pi/3;
 
-q=zeros(4,1); qp=zeros(4,1); qpp=zeros(4,1);
-%Valor inicial de las coordenadas x1, y1, x2, theta
-L1=5; L2=10; %Para probar 
-q(1)=-L1; q(2)=0; q(3)=-L1-L2; q(4)=pi; 
-%Establece el numero de incrementos para 360o o 1 seg
-numIncr=500;
-%Inicializa las variables q(t), q_prima(t) y q_segunda(t)
-q_t =zeros(4,numIncr+1);
-qp_t =zeros(4,numIncr+1);
-qpp_t =zeros(4,numIncr+1);
-%Crea la figura que contendra la animacion
-fig1=figure(1);
-hold on;
-axis([-L1-L2-2,2,-L1-2,L1+2]); %Establece los limites [xmin,xmax,ymin,ymax]
-axis manual; %Congela los limites anteriores
-axis off %Elimina el dibujo de los ejes
-%Bucle de animacion
+% Formamos el vector de coordenadas generalizadas
+q = [x1; y1; x2; theta];
 
-for i=1:numIncr
+% Hacemos los problemas de velocidad y aceleracion iniciales
+v = probvelocidad(q);
+a = probaceleracion(v,q);
+% % Escribimos los resultados
+% fprintf('En el instante inicial:\n')
+% fprintf('Vector posición inicial:\n x1=%f, y1=%f, x2=%f, theta=%f\n',q(1),q(2),q(3),q(4))
+% fprintf('Vector velocidad inicial:\n vx1=%f, vy1=%f, vx2=%f, omega=%f\n',v(1),v(2),v(3),v(4))
+% fprintf('Vector aceleración inicial:\n ax1=%f, ay1=%f, ax2=%f, alpha=%f\n',a(1),a(2),a(3),a(4))
 
-theta=2*pi*(i/numIncr);
-q = ProbPosicion (q,theta,L1,L2);
-qp = ProbVelocidad (q,omega,L1,L2);
-qpp = ProbAceleracion (q,qp,alpha,L1,L2);
-DibujaMecanismo;
-%Almacena informacion
-q_t (:,i+1)=q;
-qp_t (:,i+1)=qp;
-qpp_t(:,i+1)=qpp;
+
+
+% Para la simulación cinemática, definimos como antes el tiempo=0,005 s
+figure
+xlim([-20,10])
+ylim([-20,10])
+At = 0.005;
+% inicializamos un vector columna de las coordenadas que varían
+x1=zeros(100,1); y1=zeros(100,1); x2=zeros(100,1); theta=zeros(100,1); t=zeros(100,1);
+%iteramos para representar el mecanismo
+% secuencia_theta=load('nombre.txt');
+for i=1:1000
+q(4)=q(4) + v(4)*At; 
+% q(4)=secuencia_theta(i); 
+q = ProbPosicion(q);
+v = probvelocidad(q);
+a = probaceleracion(v,q);
+cla
+Dibujomecanismo(q)
+title('Simulación cinemática')
+drawnow
+x1(i)=q(1); y1(i)=q(2); x2(i)=q(3); theta(i)=q(4); t(i)=(i-1)*At;
 end
-%Crea la figura con los plots del punto 3
-%fig2=figure(2);
-%Plot de x3, y3
-
-%subplot(3,2,1); plot(q_t(4,:),q_t(5,:)); xlabel('\xi'); ylabel('x3');
-%subplot(3,2,2); plot(q_t(4,:),q_t(6,:)); xlabel('\xi'); ylabel('y3');
-%Plot de x3_prima, y3_prima
-%subplot(3,2,3); plot(q_t(4,:),qp_t(5,:)); xlabel('\xi'); ylabel('xp3');
-%subplot(3,2,4); plot(q_t(4,:),qp_t(6,:)); xlabel('\xi'); ylabel('yp3');
-%Plot de x3_segunda, y3_segunda
-%subplot(3,2,5); plot(q_t(4,:),qpp_t(5,:)); xlabel('\xi'); ylabel('xpp3');
-%subplot(3,2,6); plot(q_t(4,:),qpp_t(6,:)); xlabel('\xi'); ylabel('ypp3');
+% Hacemos una gráfica doble con la evolucion de las coordenadas del punto 1
+figure;
+plot(t,x1,t,y1,t,theta);
+legend('x_1','y_1','theta');
+xlabel('t (s)'); ylabel('pos (m)');
+title('Evolucion de las coordenadas del punto 1')
+% Hacemos una gráfica doble con la evolucion de las coordenadas del punto 2
+figure;
+plot(t,x2);
+legend('x_2');
+xlabel('t (s)'); ylabel('pos (m)');
+title('Evolucion de las coordenadas del punto 2')
+% Escribimos los vectores finales
+fprintf('En el instante final,\n')
+fprintf('x1=%f, y1=%f, x2=%f, theta=%f\n',q(1),q(2),q(3),q(4))
+fprintf('vx1=%f, vy1=%f, vx2=%f, omega=%f\n',v(1),v(2),v(3),v(4))
+fprintf('ax1=%f, ay1=%f, ax2=%f, alpha=%f\n',a(1),a(2),a(3),a(4))
