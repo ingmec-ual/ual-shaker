@@ -1,5 +1,6 @@
+function [ m ] = main(L1,L2)
 
-clear; close all; clc;
+%clear; close all; clc;
 
 % Si queremos ver la simuación cinemática del mecanismo debemos introducir
 % haz_dibujo=1;
@@ -7,8 +8,8 @@ haz_dibujo = 0;
 
 % parametros fijos del mecanismo
 params = struct();
-params.L1 =5; % cm
-params.L2 =10; % cm
+params.L1 = L1; % cm
+params.L2 = L2; % cm
 params.y2=2;
 params.omega = 1; % rad/s
 params.alpha = 0; % rad/s^2
@@ -110,3 +111,4 @@ legend('theta/w');
 xlabel('t(s)'); ylabel('theta(rad)');
 title('theta frente al tiempo')
 
+end 
