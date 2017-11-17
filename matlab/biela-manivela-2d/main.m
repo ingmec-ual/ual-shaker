@@ -1,4 +1,4 @@
-function [ m ] = main(L1,L2)
+function [Vx2,theta,x2,params] = main(L1,L2)
 
 %clear; close all; clc;
 
