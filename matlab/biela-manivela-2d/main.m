@@ -1,8 +1,10 @@
-function [Vx2,theta,x2,params] = main(L1,L2, haz_dibujo)
+function [Vx2,theta,x2,params] = main(L1,L2,haz_dibujo)
 
 %clear; close all; clc;
 
-% Si queremos ver la simuaciÛn cinem·tica del mecanismo debemos introducir
+% Si queremos ver la simuaci√≥n cinem√°tica del mecanismo debemos introducir
+% haz_dibujo=1;
+% haz_dibujo = 0;
 
 % parametros fijos del mecanismo
 params = struct();
@@ -12,7 +14,7 @@ params.y2=2;
 params.omega = 1; % rad/s
 params.alpha = 0; % rad/s^2
 
-% Introducimos las coordenadas iniciales del vector posiciÛn (valores
+% Introducimos las coordenadas iniciales del vector posici√≥n (valores
 % aleatorios aunque elegidos con cierto criterio)
 x1 = params.L1;
 y1 = params.L1*0.05;
@@ -27,13 +29,13 @@ v = probvelocidad(q,params);
 a = probaceleracion(v,q,params);
 % % Escribimos los resultados
 % fprintf('En el instante inicial:\n')
-% fprintf('Vector posiciÛn inicial:\n x1=%f, y1=%f, x2=%f, theta=%f\n',q(1),q(2),q(3),q(4))
+% fprintf('Vector posici√≥n inicial:\n x1=%f, y1=%f, x2=%f, theta=%f\n',q(1),q(2),q(3),q(4))
 % fprintf('Vector velocidad inicial:\n vx1=%f, vy1=%f, vx2=%f, omega=%f\n',v(1),v(2),v(3),v(4))
-% fprintf('Vector aceleraciÛn inicial:\n ax1=%f, ay1=%f, ax2=%f, alpha=%f\n',a(1),a(2),a(3),a(4))
+% fprintf('Vector aceleraci√≥n inicial:\n ax1=%f, ay1=%f, ax2=%f, alpha=%f\n',a(1),a(2),a(3),a(4))
 
 
 
-% Para la simulaciÛn cinem·tica, definimos como antes el tiempo=0,005 s
+% Para la simulaci√≥n cinem√°tica, definimos como antes el tiempo=0,005 s
 if (haz_dibujo)
     figure
     xlim([-20,10])
@@ -41,11 +43,11 @@ if (haz_dibujo)
     grid minor;
 end
 At = 0.005;
-% inicializamos un vector columna de las coordenadas que varÌan
-N = 128;
+% inicializamos un vector columna de las coordenadas que var√≠an
+N = 1024;
 x1=zeros(N,1); y1=zeros(N,1); x2=zeros(N,1); theta=zeros(N,1); t=zeros(N,1);
 
-Vx2=zeros(N,1); %Creamos la matriz de tendr· las velocidades del punto 2
+Vx2=zeros(N,1); %Creamos la matriz de tendr√° las velocidades del punto 2
 
 
 %iteramos para representar el mecanismo
@@ -60,19 +62,19 @@ for i=1:length(secuencia_theta),
     if (haz_dibujo)
         cla
         Dibujomecanismo(q,params)
-        title('SimulaciÛn cinem·tica')
+        title('Simulaci√≥n cinem√°tica')
         drawnow
     end
     x1(i)=q(1); y1(i)=q(2); x2(i)=q(3); theta(i)=q(4); t(i)=(i-1)*At;
     Vx2(i)=v(3);
 end
-% % Hacemos una gr·fica doble con la evolucion de las coordenadas del punto 1
+% % Hacemos una gr√°fica doble con la evolucion de las coordenadas del punto 1
 % figure;
 % plot(t,x1,t,y1,t,theta);
 % legend('x_1','y_1','theta');
 % xlabel('t (s)'); ylabel('pos (m)');
 % title('Evolucion de las coordenadas del punto 1')
-% % Hacemos una gr·fica doble con la evolucion de las coordenadas del punto 2
+% % Hacemos una gr√°fica doble con la evolucion de las coordenadas del punto 2
 % figure;
 % plot(rad2deg(secuencia_theta),x2);
 % legend('x_2');
@@ -83,10 +85,10 @@ end
 % fprintf('x1=%f, y1=%f, x2=%f, theta=%f\n',q(1),q(2),q(3),q(4))
 % fprintf('vx1=%f, vy1=%f, vx2=%f, omega=%f\n',v(1),v(2),v(3),v(4))
 % fprintf('ax1=%f, ay1=%f, ax2=%f, alpha=%f\n',a(1),a(2),a(3),a(4))
-
-
-%Vamos a realizar las gr·ficas necesarias
-
+% 
+% 
+% %Vamos a realizar las gr√°ficas necesarias
+% 
 % %En este caso tenemos la velocidaddex2/omega frente a theta
 % figure;
 % plot(rad2deg(secuencia_theta),(Vx2/params.omega));
