@@ -1,26 +1,26 @@
-%Lo que vamos a hacer es coger el máximo de la curva Vx2/w y le ponemos un porcentaje (que
-% también será dato de entrada) de ese máximo y vemos que rango de ángulo tenemos, para luego ir
-%a la gráfica de posición del punto x2 para ver el margen de recorrido.
-%Para poder buscar así que valores de L1 y L2 dan el mayor rango de
+%Lo que vamos a hacer es coger el mÃ¡ximo de la curva Vx2/w y le ponemos un porcentaje (que
+% tambiÃ©n serÃ¡ dato de entrada) de ese mÃ¡ximo y vemos que rango de Ã¡ngulo tenemos, para luego ir
+%a la grÃ¡fica de posiciÃ³n del punto x2 para ver el margen de recorrido.
+%Para poder buscar asÃ­ que valores de L1 y L2 dan el mayor rango de
 %movimiento
 
-%OJO TAMBIÉN HAY QUE HACER QUE LAS GR�?FICAS ESTÉN EN FUNCIÓN DEL TAMAÑO DE
-%L1 Y L2, por que de ser más grandes que para 5 y 10 no se ven.
+%OJO TAMBIÃ‰N HAY QUE HACER QUE LAS GRÃ?FICAS ESTÃ‰N EN FUNCIÃ“N DEL TAMAÃ‘O DE
+%L1 Y L2, por que de ser mÃ¡s grandes que para 5 y 10 no se ven.
 
-%¿Como hago para ver el valor de las variales x1,x2,...? ¿No salen en el workspace
-% por que main ahora es una función?  -> HAY QUE ESCRIBIRLAS EN MAIN
+%Â¿Como hago para ver el valor de las variales x1,x2,...? Â¿No salen en el workspace
+% por que main ahora es una funciÃ³n?  -> HAY QUE ESCRIBIRLAS EN MAIN
 % function [loquesea] y en beca en la llamada a main.
 
-%¿Aquí iría el doble bucle for para poder determinar los valores óptimos de L1 y L2?
+%Â¿AquÃ­ irÃ­a el doble bucle for para poder determinar los valores Ã³ptimos de L1 y L2?
 % De momento si escribimos el valor de L1 y L2 en el comand windows y
-% llamamos a 'beca' obtenemos como antes los resultados y las gráficas.
+% llamamos a 'beca' obtenemos como antes los resultados y las grÃ¡ficas.
 clear, clc, close all
 
-%¿Ponemos el valor de siempre para la primera iteración?
-porcentaje = 10; %Si queremos cambiar el porcentaje mejor cambiarlo aquí y ya está
+%Â¿Ponemos el valor de siempre para la primera iteraciÃ³n?
+porcentaje = 10; %Si queremos cambiar el porcentaje mejor cambiarlo aquÃ­ y ya estÃ¡
 
-L1s = 5:2:10;
-L2s = 7:2:15;
+L1s = 10:1:10;
+L2s = 20:1:20;
 
 Deltax2_all = zeros(length(L1s),length(L2s));
 
@@ -30,7 +30,7 @@ for L1i = 1:length(L1s),
         L1=L1s(L1i);
         L2=L2s(L2k);
 
-        [Vx2,theta,x2,params]=main(L1,L2,0);
+        [Vx2,theta,x2,params]=main(L1,L2,1);
 
              
 
@@ -39,14 +39,14 @@ for L1i = 1:length(L1s),
             liminf = theta(imin);
             limsup = theta(imax);
             
-            liminf = wrapTo2Pi(angulomax - porcentaje*angulomax/100);
-            limsup = wrapTo2Pi(angulomax + porcentaje*angulomax/100);
+%             liminf = wrapTo2Pi(angulomax - porcentaje*angulomax/100);
+%             limsup = wrapTo2Pi(angulomax + porcentaje*angulomax/100);
 
             %El rango deseado es:
             %Pasamos a grados
             liminf = liminf*180/pi;
             limsup = limsup*180/pi;
-%             fprintf('El rango de ángulos deseado es:,\n')
+%             fprintf('El rango de Ã¡ngulos deseado es:,\n')
 %             fprintf('[%f,%f]\n',liminf,limsup)
             liminf = round (liminf);
             limsup = round (limsup);
@@ -68,11 +68,10 @@ for L1i = 1:length(L1s),
     end
 end
 
-    surf(L2s,L1s,Deltax2_all);
-    xlabel('L1');
-    ylabel('L2');
+%     surf(L2s,L1s,Deltax2_all);
+%     xlabel('L1');
+%     ylabel('L2');
    
-   %¿qué es lo que realente queremos? ¿que la zona estable sea lo más grande 
-   %y plana posible? y a partir de ahí obtener L1 y L2.
-
+   %Â¿quÃ© es lo que realente queremos? Â¿que la zona estable sea lo mÃ¡s grande 
+   %y plana posible? y a partir de ahÃ­ obtener L1 y L2.
 
