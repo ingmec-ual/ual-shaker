@@ -42,6 +42,12 @@ for L1i = 1:length(L1s),
 % %                        fprintf('Para las longitudes:\n')
                         fprintf('L1 = %f  L2 = %f => Dx=%f \n',L1,L2,Deltax2max);
 %                 end
+            
+             thetamin = theta (imin);
+             thetamax = theta (imax);
+             thetamin = thetamin*180/pi;
+             thetamax = thetamax*180/pi;
+             fprintf('Se movera en el rango de angulos: [%f,%f]\n',thetamin,thetamax);
     end
 end
 
