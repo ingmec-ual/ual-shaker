@@ -1,4 +1,4 @@
-function [Vx2,theta,x2,params] = main(L1,L2,haz_dibujo)
+function [Vx2,theta,x2,params] = main(L1,L2,y2,haz_dibujo)
 
 %clear; close all; clc;
 
@@ -10,7 +10,7 @@ function [Vx2,theta,x2,params] = main(L1,L2,haz_dibujo)
 params = struct();
 params.L1 = L1; % cm
 params.L2 = L2; % cm
-params.y2=2;
+params.y2=y2;
 params.omega = 1; % rad/s
 params.alpha = 0; % rad/s^2
 
@@ -44,7 +44,7 @@ if (haz_dibujo)
 end
 At = 0.005;
 % inicializamos un vector columna de las coordenadas que varían
-N = 1024;
+N = 250;
 x1=zeros(N,1); y1=zeros(N,1); x2=zeros(N,1); theta=zeros(N,1); t=zeros(N,1);
 
 Vx2=zeros(N,1); %Creamos la matriz de tendrá las velocidades del punto 2
@@ -58,7 +58,7 @@ for i=1:length(secuencia_theta),
     q(4)=th;
     q = ProbPosicion(q,params);
     v = probvelocidad(q,params);
-    a = probaceleracion(v,q,params);
+    %a = probaceleracion(v,q,params);
     if (haz_dibujo)
         cla
         Dibujomecanismo(q,params)

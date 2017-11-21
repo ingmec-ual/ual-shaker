@@ -1,6 +1,7 @@
 function [imin,imax] = estabilidad (x,porcentaje)
 
-[xm,im]=max(abs(x));
+x = abs (x);
+[xm,im]=max(x);
 th = porcentaje*xm;
 
     i = im;
