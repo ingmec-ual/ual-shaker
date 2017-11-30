@@ -11,20 +11,14 @@ function [theta,par] = calculodepar(params)
     L2 = params.L2;
     % m será la masa del cajon que de momento la suponemos fija y de valor
     % 0.5kg
-    m = 0.5;
+    m = 0.30;
     g = 9.8;  %gravedad
     
     N = 360;
     par = zeros(N,1);
-    theta = zeros(N,1);
+    theta=linspace(0,2*pi,N);
     
-    %secuencia_theta=linspace(0,2*pi,N);
-    %for i=1:length(secuencia_theta)
-    
-    for i=1:1:360
-       
-        theta(i) = 0; %Valor inicial 
-        theta(i) = theta(i)*pi/180;
+    for i=1:length(theta)
         v1 = params.omega*params.L1;
         beta = asin((params.L1/params.L2)*sin((pi)-theta(i)));
 
@@ -46,9 +40,6 @@ function [theta,par] = calculodepar(params)
         Rx = ten*cos(beta);
         Ry = ten*sin(beta);
         par(i) = ten*L1*cos(theta(i) - pi/2 -beta);
-        
-        theta(i+1) = theta(i) +1; %incrementamos un grado en cada iteracion
-
     end
      plot(theta,par);
 end 
