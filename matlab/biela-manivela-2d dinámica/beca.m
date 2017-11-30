@@ -11,8 +11,12 @@ clear, clc, close all
 porcentaje = 5; %Si queremos cambiar el porcentaje mejor cambiarlo aqui­ y ya esta
 
 y2=0;
-L1s = 2:0.25:5;
-L2s = 6:0.25:8;
+
+%Para el caso en el que estamos ya en dinámica y nos vamos a quedar con una
+%barra en concreto
+
+L1s = 4:1:4;
+L2s = 7:1:7;
 
 Deltax2_all = zeros(length(L1s),length(L2s));
 
@@ -51,7 +55,9 @@ for L1i = 1:length(L1s),
     end
 end
 
-    surf(L2s,L1s,Deltax2_all);
-    xlabel('L2');
-    ylabel('L1');
+[theta,par] = calculodepar(params);
+
+%     surf(L2s,L1s,Deltax2_all);
+%     xlabel('L2');
+%     ylabel('L1');
    

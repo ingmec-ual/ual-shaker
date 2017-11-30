@@ -1,0 +1,54 @@
+function [theta,par] = calculodepar(params)
+
+    %Calculo del par motor (en función de theta)
+
+    %theta = 0;
+    %Empezamos con el theta inicial y hara los siguientes calculos para cada
+    %valor de theta comprendido entre [0º,360º]
+
+    w = params.omega;
+    L1 = params.L1; 
+    L2 = params.L2;
+    % m será la masa del cajon que de momento la suponemos fija y de valor
+    % 0.5kg
+    m = 0.5;
+    g = 9.8;  %gravedad
+    
+    N = 360;
+    par = zeros(N,1);
+    theta = zeros(N,1);
+    
+    %secuencia_theta=linspace(0,2*pi,N);
+    %for i=1:length(secuencia_theta)
+    
+    for i=1:1:360
+       
+        theta(i) = 0; %Valor inicial 
+        theta(i) = theta(i)*pi/180;
+        v1 = params.omega*params.L1;
+        beta = asin((params.L1/params.L2)*sin((pi)-theta(i)));
+
+        v12 = (v1*sin(theta(i) - pi/2))/cos(beta);
+        omega12 = v12/L2;
+        v2 = v1*cos(theta(i) - pi/2) + v12*sin(beta);
+
+        a1n = (params.omega^2)*L1;
+        a12n = (omega12^2)*L2;
+
+        a12t = ((a12n*sin(beta) - a1n*sin(pi - theta(i)))/(cos(beta)));
+        a2 = a1n*cos(pi - theta(i)) + a12t*sin(beta) + a12n*cos(beta);
+
+        ten = (m*a2)/cos(beta);
+        N = m*g - ten*sin(beta);
+
+        %Reacciones y par
+
+        Rx = ten*cos(beta);
+        Ry = ten*sin(beta);
+        par(i) = ten*L1*cos(theta(i) - pi/2 -beta);
+        
+        theta(i+1) = theta(i) +1; %incrementamos un grado en cada iteracion
+
+    end
+     plot(theta,par);
+end 

@@ -62,7 +62,7 @@ for i=1:length(secuencia_theta),
     if (haz_dibujo)
         cla
         Dibujomecanismo(q,params)
-        title('Simulación cinemática')
+        title('Simulacion cinematica')
         drawnow
     end
     x1(i)=q(1); y1(i)=q(2); x2(i)=q(3); theta(i)=q(4); t(i)=(i-1)*At;
