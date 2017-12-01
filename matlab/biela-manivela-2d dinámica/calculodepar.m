@@ -37,9 +37,11 @@ function [theta,par] = calculodepar(params)
 
         %Reacciones y par
 
-        Rx = ten*cos(beta);
-        Ry = ten*sin(beta);
+        Rx (i) = ten*cos(beta);
+        Ry (i) = ten*sin(beta);
         par(i) = ten*L1*cos(theta(i) - pi/2 -beta);
     end
      plot(theta,par);
+  %   plot(Rx,par);
+%      plot(Ry,par);
 end 
