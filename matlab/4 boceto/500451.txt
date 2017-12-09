@@ -1,0 +1,13 @@
+﻿"Symbol";"Value";"Unit";
+"TraceParts.PartNumber";"10-15072013-081713";"";
+"REFERENCE";"500451";"";
+"TRACEPARTS";"TRACEPARTS";"";
+"TraceParts.PartTitle";"010E - MSM-Q - Square connecting tubes - Aluminium";"";
+"TraceParts.InstanceId";"10-15072013-08171390FNI0YRB0NMV5GOZPM15BMS2";"";
+"TraceParts.PartLanguage";"es";"";
+"TraceParts.ClassPath";"ELESA:/TRACEPARTS/TP02/TP02007/TP02007001/10-15072013-081713";"";
+"SUPPLIER";"ELESA";"";
+"DESIGN";"MSM-Q-S10-100-AL";"";
+"TraceParts.PartVersion";"1.1.8";"";
+"TraceParts.PartStatus";"Published";"";
+"TraceParts.PartStatusId";"";"";

@@ -1,0 +1,13 @@
+﻿"Symbol";"Value";"Unit";
+"TraceParts.PartNumber";"10-15022011-099923";"";
+"REFERENCE";"1.61.117.310 ";"";
+"TraceParts.ClassPath";"";"";
+"TraceParts.PartVersion";"1.2.2";"";
+"TraceParts.InstanceId";"10-15022011-099923BZD9KW03XRY6NBVSEMR0S3CJ3";"";
+"TraceParts.PartLanguage";"en";"";
+"TraceParts.PartTitle";"DC gear motor (planetary gear), 1.61.117.XXX, 12 - 24V, i 19.1 - 809";"";
+"SUPPLIER";"Bühler Motor";"";
+"DESIGN";"DC gear motor (planetary gear), 1.61.117.XXX, 12 - 24V, i 19.1 - 809";"";
+"TRACEPARTS";"TRACEPARTS";"";
+"TraceParts.PartStatus";"Published";"";
+"TraceParts.PartStatusId";"";"";

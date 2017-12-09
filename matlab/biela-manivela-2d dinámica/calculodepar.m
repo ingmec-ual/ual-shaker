@@ -11,7 +11,7 @@ function [theta,par] = calculodepar(params)
     L2 = params.L2;
     % m será la masa del cajon que de momento la suponemos fija y de valor
     % 0.5kg
-    m = 0.30;
+    m = 3;
     g = 9.8;  %gravedad
     
     N = 360;
