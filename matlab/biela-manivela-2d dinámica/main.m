@@ -11,7 +11,7 @@ params = struct();
 params.L1 = L1; % cm
 params.L2 = L2; % cm
 params.y2=y2;
-params.omega = 20*pi/180; % rad/s
+params.omega = 5; % rad/s
 params.alpha = 0; % rad/s^2
 
 % Introducimos las coordenadas iniciales del vector posición (valores
