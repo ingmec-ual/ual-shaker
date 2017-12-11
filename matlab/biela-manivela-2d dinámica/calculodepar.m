@@ -38,14 +38,13 @@ function [theta,par] = calculodepar(params)
         %Reacciones y par
         
         %OJO, LAS BARRAS ESTÁN EN CM
-        %L1 = L1/100; %m
         Rx (i) = ten*cos(beta);
         Ry (i) = ten*sin(beta);
-        par(i) = ten*L1*cos(theta(i) - pi/2 -beta);
+        par(i) = ten*L1*cos(theta(i) - pi/2 -beta)/100; %Nm
         
     end
      plot(theta,par);
-     xlabel('theta (rad)'); ylabel('Par (N.cm)');
+     xlabel('theta (rad)'); ylabel('Par (N.m)');
   %   plot(Rx,par);
 %      plot(Ry,par);
 end 
