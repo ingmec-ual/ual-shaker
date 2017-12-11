@@ -10,9 +10,9 @@ function [theta,par] = calculodepar(params)
     L1 = params.L1; 
     L2 = params.L2;
     % m será la masa del cajon que de momento la suponemos fija y de valor
-    % 0.5kg
+    % 3 kg
     m = 3;
-    g = 9.8;  %gravedad
+    g = 9.8;  %gravedad m2/s
     
     N = 360;
     par = zeros(N,1);
@@ -32,16 +32,20 @@ function [theta,par] = calculodepar(params)
         a12t = ((a12n*sin(beta) - a1n*sin(pi - theta(i)))/(cos(beta)));
         a2 = a1n*cos(pi - theta(i)) + a12t*sin(beta) + a12n*cos(beta);
 
-        ten = (m*a2)/cos(beta);
+        ten = (m*a2)/cos(beta); %N
         N = m*g - ten*sin(beta);
 
         %Reacciones y par
-
+        
+        %OJO, LAS BARRAS ESTÁN EN CM
+        %L1 = L1/100; %m
         Rx (i) = ten*cos(beta);
         Ry (i) = ten*sin(beta);
         par(i) = ten*L1*cos(theta(i) - pi/2 -beta);
+        
     end
      plot(theta,par);
+     xlabel('theta (rad)'); ylabel('Par (N.cm)');
   %   plot(Rx,par);
 %      plot(Ry,par);
 end 
