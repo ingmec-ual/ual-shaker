@@ -44,7 +44,7 @@ if (haz_dibujo)
 end
 At = 0.005;
 % inicializamos un vector columna de las coordenadas que varían
-N = 250;
+N = 360;
 x1=zeros(N,1); y1=zeros(N,1); x2=zeros(N,1); theta=zeros(N,1); t=zeros(N,1);
 
 Vx2=zeros(N,1); %Creamos la matriz de tendrá las velocidades del punto 2
@@ -58,7 +58,7 @@ for i=1:length(secuencia_theta),
     q(4)=th;
     q = ProbPosicion(q,params);
     v = probvelocidad(q,params);
-    %a = probaceleracion(v,q,params);
+    a = probaceleracion(v,q,params);
     if (haz_dibujo)
         cla
         Dibujomecanismo(q,params)

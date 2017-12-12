@@ -56,6 +56,9 @@ for L1i = 1:length(L1s),
 end
 
 [theta,par] = calculodepar(params);
+figure
+plot(theta,Vx2)
+
 
 %     surf(L2s,L1s,Deltax2_all);
 %     xlabel('L2');
