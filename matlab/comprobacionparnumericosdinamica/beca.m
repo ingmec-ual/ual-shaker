@@ -15,7 +15,7 @@ for L1i = 1:length(L1s),
         L1=L1s(L1i);
         L2=L2s(L2k);
 
-        [Vx2,theta,x2,params]=main(L1,L2,y2,0);
+        [Vx2,theta,x2,params,par]=main(L1,L2,y2,0);
 
 %             % TODO: Porcentaje wrt max
 %             [imin, imax] = estabilidad (Vx2/params.omega, 1-0.01*porcentaje);
@@ -54,4 +54,9 @@ end
 %     surf(L2s,L1s,Deltax2_all);
 %     xlabel('L2');
 %     ylabel('L1');
-   
+  
+
+
+plot(theta,par)
+
+

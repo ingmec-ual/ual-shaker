@@ -1,4 +1,4 @@
-function [Vx2,theta,x2,params] = main(L1,L2,y2,haz_dibujo)
+function [Vx2,theta,x2,params,par] = main(L1,L2,y2,haz_dibujo)
 
 %clear; close all; clc;
 
@@ -13,6 +13,13 @@ params.L2 = L2; % cm
 params.y2=y2;
 params.omega = 5; % rad/s
 params.alpha = 0; % rad/s^2
+
+%Hay que definir correctamente el valor de t, Aqui o dentro del bucle?
+%No se puede poner antes del bucle por que main primero resuelve el
+%problema inicial y al llamar a restricciones no conoce a params.t
+%por lo que hace params.t dentro del bucle, es valor que se va actualizando
+
+params.t = 0.005; %inicializamos
 
 % Introducimos las coordenadas iniciales del vector posicion (valores
 % aleatorios aunque elegidos con cierto criterio)
@@ -42,12 +49,13 @@ if (haz_dibujo)
     ylim([-20,10])
     grid minor;
 end
+
 At = 0.005;
-% inicializamos un vector columna de las coordenadas que varían
+% inicializamos un vector columna de las coordenadas que varian
 N = 360;
 x1=zeros(N,1); y1=zeros(N,1); x2=zeros(N,1); theta=zeros(N,1); t=zeros(N,1);
 
-Vx2=zeros(N,1); %Creamos la matriz de tendrá las velocidades del punto 2
+Vx2=zeros(N,1); %Creamos la matriz de tendra las velocidades del punto 2
 
 
 %iteramos para representar el mecanismo
@@ -79,8 +87,11 @@ for i=1:length(secuencia_theta),
     
     %Para la dinamica par habra que sacar que sacar tambien las lambdas
     %para poder plotearlas
+    %ya tenemos que a es una matriz de 4x1 y lambda igual
     
-    
+    a(1) = acx1(i); a(2) = acy1(i); a(3) = acx2(i); a(4) = actheta(i);
+    lambda(1) = lambda1(i); lambda(2) = lambda2(i);  lambda(3) = lambda3(i);
+    lambda(4) = par(i);
     
 end
 % % Hacemos una grafica doble con la evolucion de las coordenadas del punto 1
