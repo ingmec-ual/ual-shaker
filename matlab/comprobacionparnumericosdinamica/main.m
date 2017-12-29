@@ -56,7 +56,8 @@ N = 360;
 x1=zeros(N,1); y1=zeros(N,1); x2=zeros(N,1); theta=zeros(N,1); t=zeros(N,1);
 
 Vx2=zeros(N,1); %Creamos la matriz de tendra las velocidades del punto 2
-
+acx1=zeros(N,1); acy1=zeros(N,1); acx2=zeros(N,1); actheta=zeros(N,1);
+lambda1 =zeros(N,1); lambda2=zeros(N,1); lambda3=zeros(N,1); par=zeros(N,1);
 
 %iteramos para representar el mecanismo
 %secuencia_theta=load('nombre.txt');
@@ -89,7 +90,7 @@ for i=1:length(secuencia_theta),
     %para poder plotearlas
     %ya tenemos que a es una matriz de 4x1 y lambda igual
     
-    a(1) = acx1(i); a(2) = acy1(i); a(3) = acx2(i); a(4) = actheta(i);
+    a(1)= acx1(i) ; a(2) = acy1(i); a(3) = acx2(i); a(4) = actheta(i);
     lambda(1) = lambda1(i); lambda(2) = lambda2(i);  lambda(3) = lambda3(i);
     lambda(4) = par(i);
     

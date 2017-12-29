@@ -9,7 +9,7 @@ phitderivado=jacobtderivado();
 %horizontal y por tanto el peso no actúa
 
 A = [Me,J';J,zeros(4,4)];
-B=[Q;-(Jd*v)-phitderivado];  %Si ponemos v esta bien? por que es qpunto
+B=[Q;-(Jd*v)-phitderivado]; 
 
 %Comprobando el codigo nos damos cuenta de que esta correcto, por lo que al
 %dar error con la matriz tienen que estar mal los parametros de entrada.
