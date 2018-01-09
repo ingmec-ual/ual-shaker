@@ -1,4 +1,4 @@
-function [ J ] = jacobt(params)
+function [ J ] = phit(params)
 % Derivada parcial de \Phi_t
 omega=params.omega;
 

@@ -12,7 +12,7 @@ yA=0;
 %Llamamos a las funciones de las restricciones y el jacobiano pues nos
 %hacen falta para el cálculo de la velocidad
 J=jacob(q,params);
-Q=restricciones(q,params);
-v=J\[Q];
+Q=phit(params);
+v=J\[-Q'];
 end
 

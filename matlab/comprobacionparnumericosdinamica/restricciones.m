@@ -19,8 +19,8 @@ if (abs(sin(theta))>0.9)
     phi(3,1)=x1-xA-params.L1*cos(theta);
 else
     phi(3,1)=y1-yA-params.L1*sin(theta);
-    
+end    
 phi(4,1)=theta - 2*pi*omega*params.t;
-end
+
 
 
