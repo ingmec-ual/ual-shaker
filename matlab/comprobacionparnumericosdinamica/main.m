@@ -1,4 +1,4 @@
-function [Vx2,theta,x2,params,par] = main(L1,L2,y2,haz_dibujo)
+function [Vx2,theta,x2,params,par,acx1,acy1,acx2,actheta] = main(L1,L2,y2,haz_dibujo)
 
 %clear; close all; clc;
 
