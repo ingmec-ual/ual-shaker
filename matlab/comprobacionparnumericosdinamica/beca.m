@@ -58,7 +58,7 @@ end
 
 figure
 plot(theta,par)
-xlabel('theta (rad)'); ylabel('Par (Nm)');
+xlabel('theta (rad)'); ylabel('Par (N.cm)');
 title('Par')
 
 figure

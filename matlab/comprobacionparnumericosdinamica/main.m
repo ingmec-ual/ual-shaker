@@ -90,9 +90,9 @@ for i=1:length(secuencia_theta),
     %para poder plotearlas
     %ya tenemos que a es una matriz de 4x1 y lambda igual
     
-    a(1)= acx1(i) ; a(2) = acy1(i); a(3) = acx2(i); a(4) = actheta(i);
-    lambda(1) = lambda1(i); lambda(2) = lambda2(i);  lambda(3) = lambda3(i);
-    lambda(4) = par(i);
+    acx1(i) = a(1) ; acy1(i)= a(2) ; acx2(i)= a(3) ; actheta(i) = a(4);
+    lambda1(i) = lambda(1);lambda2(i) = lambda(2); lambda3(i) = lambda(3);
+    par(i) = lambda(4);
     
 end
 % % Hacemos una grafica doble con la evolucion de las coordenadas del punto 1
