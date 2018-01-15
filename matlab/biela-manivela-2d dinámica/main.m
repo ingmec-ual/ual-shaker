@@ -1,4 +1,4 @@
-function [Vx2,theta,x2,params] = main(L1,L2,y2,haz_dibujo)
+function [Vx2,theta,x2,params,ax1] = main(L1,L2,y2,haz_dibujo)
 
 %clear; close all; clc;
 
@@ -46,7 +46,7 @@ At = 0.005;
 % inicializamos un vector columna de las coordenadas que varían
 N = 360;
 x1=zeros(N,1); y1=zeros(N,1); x2=zeros(N,1); theta=zeros(N,1); t=zeros(N,1);
-
+ax1=zeros(N,1);
 Vx2=zeros(N,1); %Creamos la matriz de tendrá las velocidades del punto 2
 
 
@@ -67,6 +67,8 @@ for i=1:length(secuencia_theta),
     end
     x1(i)=q(1); y1(i)=q(2); x2(i)=q(3); theta(i)=q(4); t(i)=(i-1)*At;
     Vx2(i)=v(3);
+    ax1(i) = a(1);
+    
 end
 % Hacemos una grafica doble con la evolucion de las coordenadas del punto 1
 figure;

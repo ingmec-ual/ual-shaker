@@ -92,7 +92,11 @@ for i=1:length(secuencia_theta),
     
     acx1(i) = a(1) ; acy1(i)= a(2) ; acx2(i)= a(3) ; actheta(i) = a(4);
     lambda1(i) = lambda(1);lambda2(i) = lambda(2); lambda3(i) = lambda(3);
-    par(i) = lambda(4);
+    parmalo(i) = lambda(4);
+    
+    par (i) = parmalo(i)/(100^2); %esto lo hacemos para tener el par en N.m ya que hemos
+    %introducido kg, cm y s2, para pasar kg.cm/s^2 a N dividimos por 100 y
+    %para pasar el otro cm a m volvemos a dividir por 100
     
 end
 % % Hacemos una grafica doble con la evolucion de las coordenadas del punto 1
