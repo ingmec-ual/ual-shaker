@@ -17,5 +17,5 @@ B=[Q;-(Jd*v)-phitderivado];
 
 X=A\B;
 a=[X(1,1);X(2,1);X(3,1);X(4,1)];
-lambda=[X(5,1);X(6,1);X(7,1);X(8,1)];
+lambda=X(5:8,1);
 end
