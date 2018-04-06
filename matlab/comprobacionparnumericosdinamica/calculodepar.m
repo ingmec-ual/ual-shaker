@@ -13,7 +13,7 @@ function [theta,par] = calculodepar(params)
     L2 = L2/100; %m
     % m será la masa del cajon que de momento la suponemos fija y de valor
     % 3 kg
-    m = 3; %kg
+    m = 6; %kg
     g = 9.8;  %m2/s
     
     N = 360;

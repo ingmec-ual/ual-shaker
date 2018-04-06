@@ -3,7 +3,7 @@ function [ Me ] = matrizmasas()
 
 mL1 = 0.007;
 mL2 = 0.01;
-mmesa = 3;
+mmesa = 6;
 
 Me(1,1) = (mL1/3) + (mL2/3);
 Me(1,2) = 0;
