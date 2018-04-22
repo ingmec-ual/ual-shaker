@@ -26,7 +26,7 @@ q = [x1; y1; x2; theta];
 
 % Hacemos los problemas de velocidad y aceleracion iniciales
 v = probvelocidad(q,params);
-a = probaceleracion(v,q,params);
+%a = probaceleracion(v,q,params);
 % % Escribimos los resultados
 % fprintf('En el instante inicial:\n')
 % fprintf('Vector posición inicial:\n x1=%f, y1=%f, x2=%f, theta=%f\n',q(1),q(2),q(3),q(4))
@@ -58,7 +58,7 @@ for i=1:length(secuencia_theta),
     q(4)=th;
     q = ProbPosicion(q,params);
     v = probvelocidad(q,params);
-    %a = probaceleracion(v,q,params);
+    a = probaceleracion(v,q,params);
     if (haz_dibujo)
         cla
         Dibujomecanismo(q,params)
