@@ -26,7 +26,7 @@ for L1i = 1:length(L1s),
         L1=L1s(L1i);
         L2=L2s(L2k);
 
-        [Vx2,theta,x2,params,ax1,ax2]=main(L1,L2,y2,1);
+        [Vx2,theta,x2,params,ax1,ax2]=main(L1,L2,y2,0);
 
             % TODO: Porcentaje wrt max.
             [imin, imax] = estabilidad (Vx2/params.omega, 1-0.01*porcentaje);
@@ -58,19 +58,12 @@ end
 [theta,par] = calculodepar(params);
 figure
 plot(theta,Vx2)
-xlabel('theta (rad)'); ylabel('Vx2 (cm/s)');
+legend('Vx_2');
+xlabel('theta (rad)'); ylabel('Velocidad (cm/s)');
 title('Velocidad del punto 2')
 
 
-figure
-plot(theta,ax1)
-xlabel('theta (rad)'); ylabel('ax1 (cm/s^2)');
-title('Aceleracion del punto x1')
 
-figure
-plot(theta,ax2)
-xlabel('theta (rad)'); ylabel('ax2 (cm/s^2)');
-title('Aceleracion del punto x2')
 
 %     surf(L2s,L1s,Deltax2_all);
 %     xlabel('L2');

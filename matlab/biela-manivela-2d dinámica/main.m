@@ -38,8 +38,8 @@ fprintf('Vector aceleracion inicial:\n ax1=%f cm/s2, ay1=%f cm/s2, ax2=%f cm/s2,
 % Para la simulacion cinematica, definimos como antes el tiempo=0,005 s
 if (haz_dibujo)
     figure
-    xlim([-20,10])
-    ylim([-20,10])
+    xlim([-15,10])
+    ylim([-6,6])
     grid minor;
 end
 At = 0.005;
@@ -62,26 +62,47 @@ for i=1:length(secuencia_theta),
     if (haz_dibujo)
         cla
         Dibujomecanismo(q,params)
-        title('Simulacion cinematica')
+        title('Simulación cinemática')
         drawnow
     end
+    %pause
     x1(i)=q(1); y1(i)=q(2); x2(i)=q(3); theta(i)=q(4); t(i)=(i-1)*At;
-    Vx2(i)=v(3);
-    ax1(i) = a(1); ax2(i) = a(3);
+    Vx2(i)=v(3); Vx1(i)=v(1); Vy1(i)=v(2);
+    ax1(i) = a(1); ax2(i) = a(3); ay1(i) = a(2);
     
 end
 % Hacemos una grafica doble con la evolucion de las coordenadas del punto 1
 figure;
-plot(t,x1,t,y1,t,theta);
-legend('x_1 (cm)','y_1 (cm)','theta (rad)');
-xlabel('t (s)'); ylabel('pos (m)');
-title('Evolucion de las coordenadas del punto 1')
+plot(theta,x1,theta,y1);
+legend('x_1 (cm)','y_1 (cm)');
+xlabel('theta (rad)'); ylabel('pos (cm)');
+title('Evolución de las coordenadas del punto 1')
+
 % Hacemos una grÃ¡fica doble con la evolucion de las coordenadas del punto 2
 figure;
-plot(rad2deg(secuencia_theta),x2);
-legend('x_2');
-xlabel('th (deg)'); ylabel('pos (cm)');
-title('Evolucion de las coordenadas del punto 2')
+plot(theta,x2); %rad2deg(secuencia_theta)
+legend('x_2 (cm)');
+xlabel('theta (rad)'); ylabel('pos (cm)');
+title('Evolución de las coordenadas del punto 2')
+
+figure;
+plot(theta,Vx1,theta,Vy1); %rad2deg(secuencia_theta)
+legend('Vx_1','Vy_1');
+xlabel('theta (rad)'); ylabel('Velocidad (cm/s)');
+title('Velocidad del punto 1')
+
+figure
+plot(theta,ax1,theta,ay1)
+legend('ax_1','ay_1');
+xlabel('theta (rad)'); ylabel('aceleración (cm/s^2)');
+title('Aceleración del punto 1')
+
+figure
+plot(theta,ax2)
+legend('ax_2');
+xlabel('theta (rad)'); ylabel('aceleración (cm/s^2)');
+title('Aceleración del punto 2')
+
 % Escribimos los vectores finales
 fprintf('En el instante final,\n')
 fprintf('x1=%f cm, y1=%f cm, x2=%f cm, theta=%f cm\n',q(1),q(2),q(3),q(4))
