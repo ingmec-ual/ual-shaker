@@ -26,7 +26,7 @@ for L1i = 1:length(L1s),
         L1=L1s(L1i);
         L2=L2s(L2k);
 
-        [Vx2,theta,x2,params,ax1,ax2]=main(L1,L2,y2,0);
+        [Vx2,theta,x2,params,ax1,ax2]=main(L1,L2,y2,1);
 
             % TODO: Porcentaje wrt max.
             [imin, imax] = estabilidad (Vx2/params.omega, 1-0.01*porcentaje);

@@ -21,7 +21,7 @@ Jd(2,3)=2*xx2;
 Jd(2,4)=0;
 Jd(3,3)=0;
 
-if (abs(tan(theta))>0.17)
+if (abs(sin(theta))>0.9)
     Jd(3,1)=0;
     Jd(3,2)=0;
     Jd(3,4)=params.L1*omega*cos(theta);
@@ -29,6 +29,6 @@ if (abs(tan(theta))>0.17)
 else
     Jd(3,1)=0;
     Jd(3,2)=0;
-    Jd(3,4)=params.L1*omega*(-sin(theta));
+    Jd(3,4)=params.L1*omega*sin(theta);
 
 end

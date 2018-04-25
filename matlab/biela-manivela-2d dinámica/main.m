@@ -38,8 +38,8 @@ fprintf('Vector aceleracion inicial:\n ax1=%f cm/s2, ay1=%f cm/s2, ax2=%f cm/s2,
 % Para la simulacion cinematica, definimos como antes el tiempo=0,005 s
 if (haz_dibujo)
     figure
-    xlim([-15,10])
-    ylim([-6,6])
+    xlim([-12,6])
+    ylim([-10,10])
     grid minor;
 end
 At = 0.005;
