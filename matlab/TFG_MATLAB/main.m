@@ -36,7 +36,7 @@ fprintf('Vector aceleracion inicial:\n ax1=%f cm/s2, ay1=%f cm/s2, ax2=%f cm/s2,
 % Para la simulacion cinematica, definimos como antes el tiempo=0,005 s
 if (haz_dibujo)
     figure
-    xlim([-12,6])
+    xlim([-12,8])
     ylim([-10,10])
     grid minor;
 end
@@ -79,7 +79,7 @@ legend('x_1 (cm)','y_1 (cm)');
 xlabel('theta (rad)'); ylabel('pos (cm)');
 title('Evolución de las coordenadas del punto 1')
 
-% Hacemos una grÃ¡fica doble con la evolucion de las coordenadas del punto 2
+% Hacemos una grafica doble con la evolucion de las coordenadas del punto 2
 figure;
 plot(theta,x2); %rad2deg(secuencia_theta)
 legend('x_2 (cm)');
@@ -110,9 +110,6 @@ fprintf('x1=%f cm, y1=%f cm, x2=%f cm, theta=%f cm\n',q(1),q(2),q(3),q(4))
 fprintf('vx1=%f cm/s, vy1=%f cm/s, vx2=%f cm/s, omega=%f cm/s\n',v(1),v(2),v(3),v(4))
 fprintf('ax1=%f cm/s2, ay1=%f cm/s2, ax2=%f cm/s2, alpha=%f cm/s2\n',a(1),a(2),a(3),a(4))
 
-
-%Vamos a realizar las graficas necesarias
-
 %En este caso tenemos la velocidaddex2/omega frente a theta
 figure;
 plot(rad2deg(secuencia_theta),(Vx2/params.omega));
@@ -125,8 +122,6 @@ plot(rad2deg(secuencia_theta),(abs(Vx2)/params.omega));
 legend('Vx_2/w');
 xlabel('th (deg)'); ylabel('Vx2/w (cm)');
 title('Valor absoluto de la Velocidad del punto 2/ omega frente a theta')
-
-
 
 %theta frente al tiempo
 figure;

@@ -1,4 +1,4 @@
-function [Vx2,theta,x2,params,par,acx1,acy1,acx2,actheta] = maindinamica(L1,L2,y2,haz_dibujo)
+function [] = maindinamica(L1,L2,y2,haz_dibujo)
 
 
 % parametros fijos del mecanismo
@@ -83,6 +83,31 @@ for i=1:length(secuencia_theta),
     %introducido kg, cm y s2, para pasar kg.cm/s^2 a N dividimos por 100 y
     %para pasar el otro cm a m volvemos a dividir por 100
     
+    
 end
+
+
+                figure
+                plot(theta,par)
+                xlabel('theta (rad)'); ylabel('Par (N.m)');
+                title('Par mediante dinámica')
+
+                figure
+                plot(theta,acx1,theta,acy1)
+                legend('ax_1','ay_1');
+                xlabel('theta (rad)'); ylabel('aceleración (cm/s^2)');
+                title('Aceleracion del punto 1 mediante dinámica')
+
+                figure
+                plot(theta,acx2)
+                legend('ax_2');
+                xlabel('theta (rad)'); ylabel('aceleración (cm/s^2)');
+                title('Aceleracion del punto 2 mediante dinámica')
+
+
+                figure
+                plot(theta,actheta)
+                xlabel('theta (rad)'); ylabel('aceleración (rad/s^2)');
+                title('Aceleracion de theta mediante dinámica')
 
 end 

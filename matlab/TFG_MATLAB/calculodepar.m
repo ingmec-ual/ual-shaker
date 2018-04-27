@@ -1,4 +1,4 @@
-function [theta,par] = calculodepar(params)
+function [] = calculodepar(params)
 
     %Calculo del par motor (en función de theta)
 
@@ -43,6 +43,9 @@ function [theta,par] = calculodepar(params)
         par(i) = ten*L1*cos(theta(i) - pi/2 -beta); %Nm
         
     end
+        
+     figure
      plot(theta,par);
      xlabel('theta (rad)'); ylabel('Par (N.m)');
+     title('Par mediante analítica')
 end 

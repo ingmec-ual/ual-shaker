@@ -3,33 +3,28 @@
 %En el siguiente código se realizarán los cálculos necesarios para el
 %trabajo.
 
-%Aquí empezamos con llamar a 'resolver' (antiguo beca) de diferentes formas,
-%la primera, que haga solamente la gráfica de las barras. La segunda que
-%llame a todo para sacar las gráficas con las barras seleccionadas y que la
-%tercera compare el par.
-
 clear, clc, close all
 
 %Obtener gráfica 'Configuración barras'
-%OJO, para que funcione lo que tenemos que lograr es que cuando TFG llame a
-%resolver, este llame a main, podamos diferenciar cuando llamamos a los de
-%dinamica (4 restricciones) a los de cinemática (3 restricciones)
+L1s = 2:0.25:5;
+L2s = 6:0.25:8;
 
-% L1s = 2:0.25:5;
-% L2s = 6:0.25:8;
-% 
-% Resolver(L1s,L2s,1,0,0);
-% 
-% L1s = 4;
-% L2s = 7;
-% 
-% Resolver(L1s,L2s,0,0,1);
+Resolver(L1s,L2s,1,0,0,0);
 
-%dinamica
-
+%Una vez hemos visto las posibles configuraciones de barras posibles,
+%elegimos una configuracion en concreto y estudiamos su comportamiento en
+%posicion, velocidad, aceleracion y par. 
 L1s = 4;
 L2s = 7;
 
-Resolver(L1s,L2s,0,1,0);
+Resolver(L1s,L2s,0,0,1,1);
+
+%Realizamos una comparacion con metodos numéricos mediante dinamica, concretamente el
+%problema dinamico inverso, es necesario hacer diferenciacion con respecto
+%al anterior por que para este caso cambiamos las restricciones.
+L1s = 4;
+L2s = 7;
+
+Resolver(L1s,L2s,0,1,0,0);
 
 
