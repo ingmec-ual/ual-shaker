@@ -43,11 +43,37 @@ for L1i = 1:length(L1s)
                  
                  [Vx2,theta,x2,params,par,acx1,acy1,acx2,actheta] = maindinamica(L1,L2,y2,0)
                  
-        end %fin del if
-    end
-end
+                 figure
+                plot(theta,par)
+                xlabel('theta (rad)'); ylabel('Par (N.m)');
+                title('Par')
 
-if (graficabarras)
+                figure
+                plot(theta,acx1)
+                xlabel('theta (rad)'); ylabel('acx1 (cm/s^2)');
+                title('Aceleracion del punto x1')
+
+                figure
+                plot(theta,acx2)
+                xlabel('theta (rad)'); ylabel('acx2 (cm/s^2)');
+                title('Aceleracion del punto x2')
+
+                figure
+                plot(theta,acy1)
+                xlabel('theta (rad)'); ylabel('acy1 (cm/s^2)');
+                title('Aceleracion del punto y1')
+
+                figure
+                plot(theta,actheta)
+                xlabel('theta (rad)'); ylabel('Vx2 (rad/s^2)');
+                title('Aceleracion de theta')
+                
+                
+                        end %fin del if
+                    end
+                end
+
+ if (graficabarras)
     surf(L2s,L1s,Deltax2_all);
     xlabel('L2');
     ylabel('L1');

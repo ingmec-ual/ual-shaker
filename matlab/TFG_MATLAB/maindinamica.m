@@ -1,10 +1,5 @@
 function [Vx2,theta,x2,params,par,acx1,acy1,acx2,actheta] = maindinamica(L1,L2,y2,haz_dibujo)
 
-%clear; close all; clc;
-
-% Si queremos ver la simuación cinemática del mecanismo debemos introducir
-% haz_dibujo=1;
-% haz_dibujo = 0;
 
 % parametros fijos del mecanismo
 params = struct();
@@ -28,15 +23,8 @@ theta = 0;
 q = [x1; y1; x2; theta];
 
 % Hacemos los problemas de velocidad y aceleracion iniciales
-v = probvelocidad(q,params);
-a = probaceleracion(v,q,params);
-% Escribimos los resultados
-% fprintf('En el instante inicial:\n')
-% fprintf('Vector posicion inicial:\n x1=%f cm, y1=%f cm, x2=%f cm, theta=%f cm\n',q(1),q(2),q(3),q(4))
-% fprintf('Vector velocidad inicial:\n vx1=%f cm/s, vy1=%f cm/s, vx2=%f cm/s, omega=%f cm/s\n',v(1),v(2),v(3),v(4))
-% fprintf('Vector aceleracion inicial:\n ax1=%f cm/s2, ay1=%f cm/s2, ax2=%f cm/s2, alpha=%f cm/s2\n',a(1),a(2),a(3),a(4))
-
-
+v = probvelocidaddinamica(q,params);
+%a = probaceleracion(v,q,params);
 
 % Para la simulacion cinematica, definimos como antes el tiempo=0,005 s
 if (haz_dibujo)
@@ -63,9 +51,10 @@ for i=1:length(secuencia_theta),
     q(4)=th;
     ti = th / (2*pi*params.omega); % tiempo
     params.t = ti;
-    q = ProbPosicion(q,params);
-    v = probvelocidad(q,params);
-    %a = probaceleracion(v,q,params);
+    q = ProbPosiciondinamica(q,params);
+    v = probvelocidaddinamica(q,params);
+    %a = probaceleracion(v,q,params); Lo quitamos por que podremos
+    %comprobarlo con 'a'
     J = jacobdinamica(q,params);
     Jd = jacobderivadodinamica(v,q,params);
     [a, lambda] = probDinamico(q,v,params,J,Jd);
