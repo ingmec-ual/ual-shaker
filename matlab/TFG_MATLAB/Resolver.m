@@ -1,5 +1,4 @@
-
-function [] = Resolver (L1s,L2s,hazgrafica,dinamica)
+function [] = Resolver (L1s,L2s,graficabarras,dinamica,graficascinematica)
 %Lo que vamos a hacer es coger el maximo de la curva Vx2/w y le ponemos un porcentaje (que
 % tambien sera dato de entrada) de ese maximo y vemos que rango de angulo tenemos, para luego ir
 %a la grafica de posicion del punto x2 para ver el margen de recorrido.
@@ -12,14 +11,17 @@ y2=0;
 
 Deltax2_all = zeros(length(L1s),length(L2s));
 
-for L1i = 1:length(L1s),
-    for L2k = 1:length(L2s),
+for L1i = 1:length(L1s)
+    for L2k = 1:length(L2s)
         
         L1=L1s(L1i);
         L2=L2s(L2k);
+        
+        if (dinamica == 0)  %LLamamos al antiguo main que no usa dinamica
 
-        [Vx2,theta,x2,params]=main(L1,L2,y2,0,dinamica);
-
+        [Vx2,theta,x2,params]=main(L1,L2,y2,0,graficascinematica);
+            
+            
             % TODO: Porcentaje wrt max.
             [imin, imax] = estabilidad (Vx2/params.omega, 1-0.01*porcentaje);
 
@@ -35,10 +37,17 @@ for L1i = 1:length(L1s),
              thetamin = thetamin*180/pi;
              thetamax = thetamax*180/pi;
              fprintf('Se movera en el rango de angulos: [%f,%f]\n',thetamin,thetamax);
+             
+             
+             else %llamamos al main de dinamica
+                 
+                 [Vx2,theta,x2,params,par,acx1,acy1,acx2,actheta] = maindinamica(L1,L2,y2,0)
+                 
+        end %fin del if
     end
 end
 
-if (hazgrafica)
+if (graficabarras)
     surf(L2s,L1s,Deltax2_all);
     xlabel('L2');
     ylabel('L1');

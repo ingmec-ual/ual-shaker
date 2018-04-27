@@ -1,4 +1,4 @@
-function [ J ] = jacob(q,params)
+function [ J ] = jacobdinamica(q,params)
 %definimos las coordenadas generalizadas
 x1=q(1);
 y1=q(2);
@@ -36,5 +36,6 @@ J(4,1)=0;
 J(4,2)=0;
 J(4,3)=0;
 J(4,4)=1;
+end 
 
 

@@ -18,18 +18,18 @@ clear, clc, close all
 L1s = 2:0.25:5;
 L2s = 6:0.25:8;
 
-Resolver(L1s,L2s,1,0);
+Resolver(L1s,L2s,1,0,0);
+
+L1s = 4;
+L2s = 7;
+
+Resolver(L1s,L2s,0,0,1);
+
+%dinamica
 
 % L1s = 4;
 % L2s = 7;
 % 
-% Resolver(L1s,L2s,0,0);
-% 
-% %dinamica
-% 
-% L1s = 4;
-% L2s = 7;
-% 
-% Resolver(L1s,L2s,0,1);
+% Resolver(L1s,L2s,0,1,0);
 
 

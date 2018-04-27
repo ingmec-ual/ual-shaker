@@ -32,5 +32,9 @@ else
     Jd(3,4)=params.L1*omega*sin(theta);
 end
 
+Jd(4,1)=0;
+Jd(4,2)=0;
+Jd(4,3)=0;
+Jd(4,4)=0;
 
 end
