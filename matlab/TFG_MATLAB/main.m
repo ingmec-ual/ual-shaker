@@ -104,6 +104,18 @@ legend('ax_2');
 xlabel('theta (rad)'); ylabel('aceleración (cm/s^2)');
 title('Aceleración del punto 2')
 
+
+s=theta;
+p1=-x2;
+p2=-Vx2;
+p3=-ax2;
+
+figure;
+[ax_2,x_2,Vx_2]=plotyy(s,p3,[s',s'],[p1',p2']); 
+xlabel('theta (rad)'); ylabel('pos (cm); V(cm/s); a(cm/s^2)');
+title('Corredera')
+
+
 % Escribimos los vectores finales
 fprintf('En el instante final,\n')
 fprintf('x1=%f cm, y1=%f cm, x2=%f cm, theta=%f cm\n',q(1),q(2),q(3),q(4))
