@@ -1,5 +1,5 @@
 
-function[Jd]=jacobderivado(v,q,params)
+function[Jd]=jacobderivadodinamica(v,q,params)
 %Definimos los valores del vector velocidad y del vector de posición
 %necesarios para el cálculo de la derivada del jacobiano respecto al tiempo
 xx1=v(1);

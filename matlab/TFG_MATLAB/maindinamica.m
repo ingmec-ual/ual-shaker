@@ -83,6 +83,7 @@ for i=1:length(secuencia_theta),
     %introducido kg, cm y s2, para pasar kg.cm/s^2 a N dividimos por 100 y
     %para pasar el otro cm a m volvemos a dividir por 100
     
+  
     
 end
 
@@ -109,5 +110,20 @@ end
                 plot(theta,actheta)
                 xlabel('theta (rad)'); ylabel('aceleración (rad/s^2)');
                 title('Aceleracion de theta mediante dinámica')
+                
+                figure
+                plot(theta,lambda1)
+                xlabel('theta (rad)'); ylabel(' ¿?');
+                title('Prueba lambda 1')
+                
+                figure
+                plot(theta,lambda2)
+                xlabel('theta (rad)'); ylabel(' ¿?');
+                title('Prueba lambda 2')
+                
+                figure
+                plot(theta,lambda3)
+                xlabel('theta (rad)'); ylabel('¿? ');
+                title('Prueba lambda 3')
 
 end 

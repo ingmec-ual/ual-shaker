@@ -1,4 +1,4 @@
-function[phi]=restricciones(q,params)
+function[phi]=restriccionesdinamica(q,params)
 %definimos las coordenadas naturales y relativas, que tenemos dos, ya que
 %una será nuestra incógnita y otra es un dato dado en el enunciado. 
 x1=q(1);
