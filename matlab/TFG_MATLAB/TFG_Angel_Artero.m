@@ -27,4 +27,7 @@ L2s = 7;
 
 Resolver(L1s,L2s,0,1,0,0);
 
-
+%sim('SimulacionSimple'); %Tocar en la corredera, CS3 / World?
+% theta=simout_ang(:,1);
+% Tr=simout_Tr(:,3);
+% plot(theta,Tr)

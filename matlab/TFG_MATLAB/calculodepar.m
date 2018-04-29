@@ -12,7 +12,7 @@ function [] = calculodepar(params)
     L1 = L1/100; %m
     L2 = L2/100; %m
     % m será la masa del cajon que de momento la suponemos fija y de valor
-    % 3 kg
+    % 6 kg ( para el motor más desfavorable)
     m = 6; %kg
     g = 9.8;  %m2/s
     
@@ -48,4 +48,17 @@ function [] = calculodepar(params)
      plot(theta,par);
      xlabel('theta (rad)'); ylabel('Par (N.m)');
      title('Par mediante analítica')
+     
+     %A modo de comprobación vamos a ver que salen las reacciones, dado que
+     %tambien vemos su valor. Pruebalambda...
+     
+     figure
+     plot(theta,Rx);
+     xlabel('theta (rad)'); ylabel('Reacción X (N)');
+     title('Reacción X mediante analítica')
+     
+     figure
+     plot(theta,Ry);
+     xlabel('theta (rad)'); ylabel('Reacción Y (N)');
+     title('Reacción Y mediante analítica')
 end 

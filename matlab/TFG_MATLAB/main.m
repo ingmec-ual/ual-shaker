@@ -92,6 +92,12 @@ legend('Vx_1','Vy_1');
 xlabel('theta (rad)'); ylabel('Velocidad (cm/s)');
 title('Velocidad del punto 1')
 
+figure;
+plot(theta,Vx2); %rad2deg(secuencia_theta)
+legend('Vx_2');
+xlabel('theta (rad)'); ylabel('Velocidad (cm/s)');
+title('Velocidad del punto 2')
+
 figure
 plot(theta,ax1,theta,ay1)
 legend('ax_1','ay_1');
