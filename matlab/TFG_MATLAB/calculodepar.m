@@ -43,7 +43,8 @@ function [] = calculodepar(params)
         par(i) = ten*L1*cos(theta(i) - pi/2 -beta); %Nm
         
     end
-        
+     
+     %subplot(3,1,1);
      figure
      plot(theta,par);
      xlabel('theta (rad)'); ylabel('Par (N.m)');
@@ -52,11 +53,13 @@ function [] = calculodepar(params)
      %A modo de comprobación vamos a ver que salen las reacciones, dado que
      %tambien vemos su valor. Pruebalambda...
      
+     %subplot(3,1,2);
      figure
      plot(theta,Rx);
      xlabel('theta (rad)'); ylabel('Reacción X (N)');
      title('Reacción X mediante analítica')
      
+     %subplot(3,1,3);
      figure
      plot(theta,Ry);
      xlabel('theta (rad)'); ylabel('Reacción Y (N)');
