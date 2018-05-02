@@ -17,7 +17,7 @@ function [] = calculodepar(params)
     g = 9.8;  %m2/s
     
     N = 360;
-    par = zeros(N,1);
+    par = zeros(N,1); v1pr = zeros(N,1); v2pr = zeros(N,1); a2pr = zeros(N,1); 
     theta=linspace(0,2*pi,N);
     
     for i=1:length(theta)
@@ -33,7 +33,8 @@ function [] = calculodepar(params)
 
         a12t = ((a12n*sin(beta) - a1n*sin(pi - theta(i)))/(cos(beta))); %m/s2
         a2 = a1n*cos(pi - theta(i)) + a12t*sin(beta) + a12n*cos(beta); %m/s2
-
+        a2pr (i) = a2;
+        
         ten = (m*a2)/cos(beta); %kg.m/s2
         N = m*g - ten*sin(beta); %N
 
@@ -41,6 +42,9 @@ function [] = calculodepar(params)
         Rx (i) = ten*cos(beta);
         Ry (i) = ten*sin(beta);
         par(i) = ten*L1*cos(theta(i) - pi/2 -beta); %Nm
+        v1pr(i)= v1;
+        v12pr(i)= v12;
+        v2pr (i) = v2;
         
     end
      
@@ -49,6 +53,7 @@ function [] = calculodepar(params)
      plot(theta,par);
      xlabel('theta (rad)'); ylabel('Par (N.m)');
      title('Par mediante analítica')
+     
      
      %A modo de comprobación vamos a ver que salen las reacciones, dado que
      %tambien vemos su valor. Pruebalambda...
@@ -64,4 +69,20 @@ function [] = calculodepar(params)
      plot(theta,Ry);
      xlabel('theta (rad)'); ylabel('Reacción Y (N)');
      title('Reacción Y mediante analítica')
+     
+     figure
+     plot(theta,v1pr);
+     xlabel('theta (rad)'); ylabel('velocidad (m/s)');
+     title('v1')
+     
+     figure
+     plot(theta,v2pr);
+     xlabel('theta (rad)'); ylabel('velocidad (m/s)');
+     title('v2')
+     
+     figure
+     plot(theta,a2pr);
+     xlabel('theta (rad)'); ylabel('aceleración (m/s^2)');
+     title('a2')
+    
 end 
