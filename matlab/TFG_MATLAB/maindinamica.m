@@ -54,7 +54,7 @@ for i=1:length(secuencia_theta),
     q = ProbPosiciondinamica(q,params);
     v = probvelocidaddinamica(q,params);
     %a = probaceleracion(v,q,params); Lo quitamos por que podremos
-    %comprobarlo con 'a'
+    %comprobarlo con lo que obtenemos del main de cinematica
     J = jacobdinamica(q,params);
     Jd = jacobderivadodinamica(v,q,params);
     [a, lambda] = probDinamico(q,v,params,J,Jd);
@@ -111,19 +111,19 @@ end
                 xlabel('theta (rad)'); ylabel('aceleración (rad/s^2)');
                 title('Aceleracion de theta mediante dinámica')
                 
-                figure
-                plot(theta,lambda1)
-                xlabel('theta (rad)'); ylabel(' ¿?');
-                title('Prueba lambda 1')
-                
-                figure
-                plot(theta,lambda2)
-                xlabel('theta (rad)'); ylabel(' ¿?');
-                title('Prueba lambda 2')
-                
-                figure
-                plot(theta,lambda3)
-                xlabel('theta (rad)'); ylabel('¿? ');
-                title('Prueba lambda 3')
+%                 figure
+%                 plot(theta,lambda1)
+%                 xlabel('theta (rad)'); ylabel(' ¿?');
+%                 title('Prueba lambda 1')
+%                 
+%                 figure
+%                 plot(theta,lambda2)
+%                 xlabel('theta (rad)'); ylabel(' ¿?');
+%                 title('Prueba lambda 2')
+%                 
+%                 figure
+%                 plot(theta,lambda3)
+%                 xlabel('theta (rad)'); ylabel('¿? ');
+%                 title('Prueba lambda 3')
 
 end 

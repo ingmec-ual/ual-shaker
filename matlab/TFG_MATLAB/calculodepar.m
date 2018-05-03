@@ -26,8 +26,8 @@ function [] = calculodepar(params)
 
         v12 = (v1*sin(theta(i) - pi/2))/cos(beta); %m/s
         omega12 = v12/L2; %rad/s
-        v2 = v1*cos(theta(i) - pi/2) + v12*sin(beta); %m/s
-
+         
+        v2 = v1*cos(theta(i) - pi/2) + v12*sin(beta);%m/s
         a1n = (w^2)*L1; %m/s2
         a12n = (omega12^2)*L2; %m/s2
 
@@ -48,23 +48,16 @@ function [] = calculodepar(params)
         
     end
      
-     %subplot(3,1,1);
      figure
      plot(theta,par);
      xlabel('theta (rad)'); ylabel('Par (N.m)');
      title('Par mediante analítica')
      
-     
-     %A modo de comprobación vamos a ver que salen las reacciones, dado que
-     %tambien vemos su valor. Pruebalambda...
-     
-     %subplot(3,1,2);
      figure
      plot(theta,Rx);
      xlabel('theta (rad)'); ylabel('Reacción X (N)');
      title('Reacción X mediante analítica')
      
-     %subplot(3,1,3);
      figure
      plot(theta,Ry);
      xlabel('theta (rad)'); ylabel('Reacción Y (N)');
