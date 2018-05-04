@@ -55,11 +55,6 @@ for L1i = 1:length(L1s)
 
  if (graficabarras)
      
-    %Cuando hacemos 1 'graficabarras' obtenemos tambien el calculo de par
-    %por medios analiticos
-    calculodepar(params);
-
-    
     figure
     surf(L2s,L1s,Deltax2_all);
     xlabel('L2');

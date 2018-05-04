@@ -72,6 +72,9 @@ end
 
 
 if (graficascinematica ==1) 
+    
+    calculodepar(params);
+    
 % Hacemos una grafica doble con la evolucion de las coordenadas del punto 1
 figure;
 plot(theta,x1,theta,y1);
@@ -117,7 +120,7 @@ p2=-Vx2;
 p3=-ax2;
 
 figure;
-[ax_2,x_2,Vx_2]=plotyy(s,p3,[s',s'],[p1',p2']); 
+plotyy(s,p3,[s',s'],[p1',p2']); 
 xlabel('theta (rad)'); ylabel('pos (cm); V(cm/s); a(cm/s^2)');
 title('Corredera')
 
