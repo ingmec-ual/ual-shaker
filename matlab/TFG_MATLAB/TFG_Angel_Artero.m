@@ -29,8 +29,8 @@ clear, clc, close all
 
 
 %sim('SimulacionSimple');
-%sim('Copy_of_SimulacionSimple');
-sim('mesaparasimulink');
+sim('Copy_of_SimulacionSimple'); %OJO Los valores de los vectores son para esta simulacion
+%sim('mesaparasimulink');
 
 theta=simout_ang.signals.values(:,1);
 for i=1:length (theta)

@@ -12,21 +12,21 @@ end
 
 
 omega=simout_omega.signals.values(:,1);
-pos=simout_pos.signals.values(:,1);
-velocidad=simout_vel.signals.values(:,1);
-aceleracion=simout_acel.signals.values(:,1);
+pos=simout_pos.signals.values(:,3);
+velocidad=simout_vel.signals.values(:,3);
+aceleracion=simout_acel.signals.values(:,3);
 par=simout_Tr.signals.values(:,3);
 rx=simout_Tr1.signals.values(:,1);
-ry=simout_Tr1.signals.values(:,2);
+ry=simout_Tr2.signals.values(:,3);
 
-    theta = theta(5:50);
-    omega = omega (5:50);
-    pos = pos (5:50);
-    velocidad = velocidad (5:50);
-    aceleracion = aceleracion (5:50);
-    par = par (5:50);
-    rx = rx(5:50);
-    ry = ry(5:50);
+    theta = theta(5:100);
+    omega = omega (5:100);
+    pos = pos (5:100);
+    velocidad = velocidad (5:100);
+    aceleracion = aceleracion (5:100);
+    par = par (5:100);
+    rx = rx(5:100);
+    ry = ry(5:100);
 
 figure
 plot(theta,omega);
