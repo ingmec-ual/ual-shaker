@@ -52,14 +52,14 @@ ry=simout_Tr1.signals.values(:,2);
 
 
      
-%     theta = theta(5:50);
-%     omega = omega (5:50);
-%     pos = pos (5:50);
-%     velocidad = velocidad (5:50);
-%     aceleracion = aceleracion (5:50);
-%     par = par (5:50);
-%     rx = rx(5:50);
-%     ry = ry(5:50);
+    theta = theta(5:50);
+    omega = omega (5:50);
+    pos = pos (5:50);
+    velocidad = velocidad (5:50);
+    aceleracion = aceleracion (5:50);
+    par = par (5:50);
+    rx = rx(5:50);
+    ry = ry(5:50);
 
 
 figure
