@@ -27,8 +27,10 @@ clear, clc, close all
 % 
 % Resolver(L1s,L2s,0,1,0,0);
 
-sim('Copy_of_SimulacionSimple');
 
+%sim('SimulacionSimple');
+%sim('Copy_of_SimulacionSimple');
+sim('mesaparasimulink');
 
 theta=simout_ang.signals.values(:,1);
 for i=1:length (theta)
@@ -39,6 +41,7 @@ for i=1:length (theta)
     theta (i) =theta (i) *(pi/180);
 end
 
+
 omega=simout_omega.signals.values(:,1);
 pos=simout_pos.signals.values(:,1);
 velocidad=simout_vel.signals.values(:,1);
@@ -46,6 +49,17 @@ aceleracion=simout_acel.signals.values(:,1);
 par=simout_Tr.signals.values(:,3);
 rx=simout_Tr1.signals.values(:,1);
 ry=simout_Tr1.signals.values(:,2);
+
+
+     
+%     theta = theta(5:50);
+%     omega = omega (5:50);
+%     pos = pos (5:50);
+%     velocidad = velocidad (5:50);
+%     aceleracion = aceleracion (5:50);
+%     par = par (5:50);
+%     rx = rx(5:50);
+%     ry = ry(5:50);
 
 
 figure
