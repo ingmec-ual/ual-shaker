@@ -29,22 +29,24 @@ velocidadtotaly=simout_vel1.signals.values(:,1);
 postotalx=simout_pos1.signals.values(:,3);
 postotaly=simout_pos1.signals.values(:,1);
 
-    theta = theta(5:75);
-    omega = omega (5:75);
-    pos = pos (5:75);
-    velocidad = velocidad (5:75);
-    aceleracion = aceleracion (5:75);
-    rx = rx(5:75);
-    ry = ry(5:75);
+b=150;
+
+    theta = theta(5:b);
+    omega = omega (5:b);
+    pos = pos (5:b);
+    velocidad = velocidad (5:b);
+    aceleracion = aceleracion (5:b);
+    rx = rx(5:b);
+    ry = ry(5:b);
     
-    aceleraciontotalx = aceleraciontotalx(5:75);
-    aceleraciontotaly = aceleraciontotaly(5:75);
-    velocidadtotalx = velocidadtotalx(5:75);
-    velocidadtotaly = velocidadtotaly(5:75);
-    postotalx = postotalx(5:75);
-    postotaly = postotaly(5:75);
-    parx = parx(5:75);
-    pary = pary(5:75);
+    aceleraciontotalx = aceleraciontotalx(5:b);
+    aceleraciontotaly = aceleraciontotaly(5:b);
+    velocidadtotalx = velocidadtotalx(5:b);
+    velocidadtotaly = velocidadtotaly(5:b);
+    postotalx = postotalx(5:b);
+    postotaly = postotaly(5:b);
+    parx = parx(5:b);
+    pary = pary(5:b);
     
     postotal = sqrt((postotalx.*postotalx) + (postotaly.*postotaly) );
     velocidadtotal = sqrt((velocidadtotalx.*velocidadtotalx) + (velocidadtotaly.*velocidadtotaly) );
