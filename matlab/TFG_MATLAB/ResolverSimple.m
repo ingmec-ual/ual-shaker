@@ -14,20 +14,20 @@ omega=simout_omega.signals.values(:,1);
 pos=simout_pos.signals.values(:,1);
 velocidad=simout_vel.signals.values(:,1);
 aceleracion=simout_acel.signals.values(:,1);
-par=simout_Tr.signals.values(:,1);
+par=simout_Tr.signals.values(:,3);
 rx=simout_Tr1.signals.values(:,1);
 ry=simout_Tr1.signals.values(:,2);
 
-
+b=300;
      
-    theta = theta(50:100);
-    omega = omega (50:100);
-    pos = pos (50:100);
-    velocidad = velocidad (50:100);
-    aceleracion = aceleracion (50:100);
-    par = par (50:100);
-    rx = rx(50:100);
-    ry = ry(50:100);
+    theta = theta(50:b);
+    omega = omega (50:b);
+    pos = pos (50:b);
+    velocidad = velocidad (50:b);
+    aceleracion = aceleracion (50:b);
+    par = par (50:b);
+    rx = rx(50:b);
+    ry = ry(50:b);
 
 
 figure
@@ -71,3 +71,12 @@ plot(theta,-ry);
 legend('R_y');
 xlabel('theta (rad)'); ylabel('N');
 title('Ry mediante Simulink')
+
+Ts=simout_pos.time(2)-simout_pos.time(1);
+x=simout_pos.signals.values(:,1);
+X=fftshift(fft(x-mean(x)));
+Fs=1/Ts; fs=linspace(-0.5*Fs,0.5*Fs,length(x));
+
+figure, plot(fs,20*log10(abs(X))), grid on;
+ylabel('dB');
+xlabel('Freq (Hz)');

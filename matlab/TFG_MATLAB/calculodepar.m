@@ -63,19 +63,19 @@ function [] = calculodepar(params)
      xlabel('theta (rad)'); ylabel('Reacción Y (N)');
      title('Reacción Y mediante analítica')
      
-     figure
-     plot(theta,v1pr);
-     xlabel('theta (rad)'); ylabel('velocidad (m/s)');
-     title('v1')
-     
-     figure
-     plot(theta,v2pr);
-     xlabel('theta (rad)'); ylabel('velocidad (m/s)');
-     title('v2')
-     
-     figure
-     plot(theta,a2pr);
-     xlabel('theta (rad)'); ylabel('aceleración (m/s^2)');
-     title('a2')
-    
+%      figure
+%      plot(theta,v1pr);
+%      xlabel('theta (rad)'); ylabel('velocidad (m/s)');
+%      title('v1')
+%      
+%      figure
+%      plot(theta,v2pr);
+%      xlabel('theta (rad)'); ylabel('velocidad (m/s)');
+%      title('v2')
+%      
+%      figure
+%      plot(theta,a2pr);
+%      xlabel('theta (rad)'); ylabel('aceleración (m/s^2)');
+%      title('a2')
+%     
 end 
