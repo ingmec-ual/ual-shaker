@@ -1,4 +1,6 @@
-sim('mesaparasimulink');
+close all
+
+sim('mesaparasimulink2');
 
 
 theta=simout_ang.signals.values(:,1);
@@ -29,24 +31,24 @@ velocidadtotaly=simout_vel1.signals.values(:,1);
 postotalx=simout_pos1.signals.values(:,3);
 postotaly=simout_pos1.signals.values(:,1);
 
-b=150;
+b=4*150;
 
-    theta = theta(5:b);
-    omega = omega (5:b);
-    pos = pos (5:b);
-    velocidad = velocidad (5:b);
-    aceleracion = aceleracion (5:b);
-    rx = rx(5:b);
-    ry = ry(5:b);
+    theta = theta(50:b);
+    omega = omega (50:b);
+    pos = pos (50:b);
+    velocidad = velocidad (50:b);
+    aceleracion = aceleracion (50:b);
+    rx = rx(50:b);
+    ry = ry(50:b);
     
-    aceleraciontotalx = aceleraciontotalx(5:b);
-    aceleraciontotaly = aceleraciontotaly(5:b);
-    velocidadtotalx = velocidadtotalx(5:b);
-    velocidadtotaly = velocidadtotaly(5:b);
-    postotalx = postotalx(5:b);
-    postotaly = postotaly(5:b);
-    parx = parx(5:b);
-    pary = pary(5:b);
+    aceleraciontotalx = aceleraciontotalx(50:b);
+    aceleraciontotaly = aceleraciontotaly(50:b);
+    velocidadtotalx = velocidadtotalx(50:b);
+    velocidadtotaly = velocidadtotaly(50:b);
+    postotalx = postotalx(50:b);
+    postotaly = postotaly(50:b);
+    parx = parx(50:b);
+    pary = pary(50:b);
     
     postotal = sqrt((postotalx.*postotalx) + (postotaly.*postotaly) );
     velocidadtotal = sqrt((velocidadtotalx.*velocidadtotalx) + (velocidadtotaly.*velocidadtotaly) );
@@ -140,7 +142,7 @@ xlabel('theta (rad)'); ylabel('cm');
 title('aceleración y de simulación')
 
 Ts=simout_pos.time(2)-simout_pos.time(1);
-x=simout_pos.signals.values(:,3);
+x=pos; %x=simout_pos.signals.values(:,3);
 X=fftshift(fft(x-mean(x)));
 Fs=1/Ts; fs=linspace(-0.5*Fs,0.5*Fs,length(x));
 

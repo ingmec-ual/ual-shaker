@@ -1,3 +1,5 @@
+close all
+
 sim('Copy_of_SimulacionSimple');
 
 theta=simout_ang.signals.values(:,1);
@@ -18,7 +20,7 @@ par=simout_Tr.signals.values(:,3);
 rx=simout_Tr1.signals.values(:,1);
 ry=simout_Tr1.signals.values(:,2);
 
-b=150;
+b=4*150;
      
     theta = theta(50:b);
     omega = omega (50:b);
@@ -73,9 +75,9 @@ xlabel('theta (rad)'); ylabel('N');
 title('Ry mediante Simulink')
 
 Ts=simout_pos.time(2)-simout_pos.time(1);
-x=simout_pos.signals.values(:,1);
-X=fftshift(fft(x-mean(x)));
-Fs=1/Ts; fs=linspace(-0.5*Fs,0.5*Fs,length(x));
+x=pos;
+X=fftshift(fft(x-mean(x))); %X=fftshift(fft(x-mean(x)),2048);
+Fs=1/Ts; fs=linspace(-0.5*Fs,0.5*Fs,length(X));
 
 figure, plot(fs,20*log10(abs(X))), grid on;
 ylabel('dB');
