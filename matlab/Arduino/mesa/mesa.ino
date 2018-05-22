@@ -24,8 +24,9 @@ int PULSADOR4=45;
 // LCD:
 // initialize the library with the numbers of the interface pins
 // LiquidCrystal(rs, rw, enable, d0, d1, d2, d3, d4, d5, d6, d7)
-LiquidCrystal lcd(24, 26, 28,    30, 32, 34, 36, 38, 40, 42, 44);
-
+// LiquidCrystal(rs, rw, enable, d4, d5, d6, d7)
+//LiquidCrystal lcd(24, 26,   28, 38, 40, 42, 44);
+//LiquidCrystal lcd(24, 26, 28,    30, 32, 34, 36, 38, 40, 42, 44);
 
 // Sensores IMU:
 
@@ -61,7 +62,7 @@ void setup()
   pinMode(PULSADOR4, INPUT_PULLUP); 
   
   // set up the LCD's number of columns and rows:
-  lcd.begin(16, 2);
+  //lcd.begin(16, 2);
 
   // Setup serial link:  
   Serial.begin(9600);
@@ -71,15 +72,20 @@ void setup()
 // movemos el PWM directamente de cada motor.
 void menu_control_manual()
 {
-  // Actualiza LCD:
-  char str[20];
-  sprintf(str,"X+ Y+ | X=%.01f%%", 100*MOTORX_VALOR_PWM/255.0f);
+ #if 0
+ // Actualiza LCD:
+  lcd.clear();
+  char s[20];
   lcd.setCursor(0, 0);
-  lcd.print(str);
-  sprintf(str,"X- Y- | Y=%.01f%%", 100*MOTORY_VALOR_PWM/255.0f);
-  lcd.setCursor(0,1);
-  lcd.print(str);
+  lcd.print("X+ Y+ | X=");
+  lcd.print(dtostrf(100*MOTORX_VALOR_PWM/255.0f, 3, 1, s));
+  lcd.print("%");
 
+  lcd.setCursor(0,1);
+  lcd.print("X- Y- | Y=");
+  lcd.print(dtostrf(100*MOTORY_VALOR_PWM/255.0f, 3, 1, s));
+  lcd.print("%");
+#endif
   // Procesa botones:
   if (!digitalRead(PULSADOR1) && MOTORX_VALOR_PWM<255) MOTORX_VALOR_PWM++;
   if (!digitalRead(PULSADOR3) && MOTORX_VALOR_PWM>0)   MOTORX_VALOR_PWM--;
@@ -90,7 +96,7 @@ void menu_control_manual()
   analogWrite(PIN_MOTORX_PWM, MOTORX_VALOR_PWM);
   analogWrite(PIN_MOTORY_PWM, MOTORY_VALOR_PWM);  
   
-  delay(100);
+  delay(20);
 }
 
 
