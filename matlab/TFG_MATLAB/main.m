@@ -11,7 +11,7 @@ params.alpha = 0; % rad/s^2
 
 params.t = 0.005; %inicializamos
 
-% Introducimos las coordenadas iniciales del vector posicion (valores
+% Se introducen las coordenadas iniciales del vector posicion (valores
 % aleatorios aunque elegidos con cierto criterio)
 
 x1 = params.L1;
@@ -19,13 +19,13 @@ y1 = params.L1*0.05;
 x2 = params.L1-params.L2;
 theta = 0;
 
-% Formamos el vector de coordenadas generalizadas
+% Se forma el vector de coordenadas generalizadas
 q = [x1; y1; x2; theta];
 
-% Hacemos los problemas de velocidad y aceleracion iniciales
+% Se hacen los problemas de velocidad y aceleracion iniciales
 v = probvelocidad(q,params);
 a = probaceleracion(v,q,params);
-% Escribimos los resultados
+% Se muestran los resultados
 fprintf('En el instante inicial:\n')
 fprintf('Vector posicion inicial:\n x1=%f cm, y1=%f cm, x2=%f cm, theta=%f cm\n',q(1),q(2),q(3),q(4))
 fprintf('Vector velocidad inicial:\n vx1=%f cm/s, vy1=%f cm/s, vx2=%f cm/s, omega=%f cm/s\n',v(1),v(2),v(3),v(4))
@@ -33,7 +33,7 @@ fprintf('Vector aceleracion inicial:\n ax1=%f cm/s2, ay1=%f cm/s2, ax2=%f cm/s2,
 
 
 
-% Para la simulacion cinematica, definimos como antes el tiempo=0,005 s
+% Para la simulacion cinematica, se define el tiempo=0,005 s
 if (haz_dibujo)
     figure
     xlim([-12,8])
@@ -41,14 +41,14 @@ if (haz_dibujo)
     grid minor;
 end
 At = 0.005;
-% inicializamos un vector columna de las coordenadas que varían
+% se inicializa un vector columna de las coordenadas que varian
 N = 360;
 x1=zeros(N,1); y1=zeros(N,1); x2=zeros(N,1); theta=zeros(N,1); t=zeros(N,1);
 ax1=zeros(N,1); ax2=zeros(N,1);
-Vx2=zeros(N,1); %Creamos la matriz de tendrá las velocidades del punto 2
+Vx2=zeros(N,1); %Se crea la matriz que contiene las velocidades del punto 2
 
 
-%iteramos para representar el mecanismo
+%se itera para representar el mecanismo
 %secuencia_theta=load('nombre.txt');
 secuencia_theta=linspace(0,2*pi,N);
 for i=1:length(secuencia_theta),
@@ -75,14 +75,14 @@ if (graficascinematica ==1)
     
     calculodepar(params);
     
-% Hacemos una grafica doble con la evolucion de las coordenadas del punto 1
+% Se hace una grafica doble con la evolucion de las coordenadas del punto 1
 figure;
 plot(theta,x1,theta,y1);
 legend('x_1 (cm)','y_1 (cm)');
 xlabel('theta (rad)'); ylabel('pos (cm)');
 title('Evoluci�n de las coordenadas del punto 1')
 
-% Hacemos una grafica doble con la evolucion de las coordenadas del punto 2
+% Se hace una grafica con la evolucion de las coordenadas del punto 2
 figure;
 plot(theta,x2); %rad2deg(secuencia_theta)
 legend('x_2 (cm)');
@@ -125,13 +125,13 @@ xlabel('theta (rad)'); ylabel('pos (cm); V(cm/s); a(cm/s^2)');
 title('Corredera')
 
 
-% Escribimos los vectores finales
+% Se escriben los vectores finales
 fprintf('En el instante final,\n')
 fprintf('x1=%f cm, y1=%f cm, x2=%f cm, theta=%f cm\n',q(1),q(2),q(3),q(4))
 fprintf('vx1=%f cm/s, vy1=%f cm/s, vx2=%f cm/s, omega=%f cm/s\n',v(1),v(2),v(3),v(4))
 fprintf('ax1=%f cm/s2, ay1=%f cm/s2, ax2=%f cm/s2, alpha=%f cm/s2\n',a(1),a(2),a(3),a(4))
 
-%En este caso tenemos la velocidaddex2/omega frente a theta
+%En este caso se obtienen la velocidaddex2/omega frente a theta
 figure;
 plot(rad2deg(secuencia_theta),(Vx2/params.omega));
 legend('Vx_2/w');

@@ -1,11 +1,11 @@
 function q = ProbPosicion (q,params)
-%Inicializamos las variables
+%se inicializan las variables
 err = 1e10;
 epsilon = 1e-10; %tolerancia
 iter = 0; 
 iterMax = 50; 
 
-% Creamos un bucle hasta que el error sea menor que la tolerancia
+% bucle hasta que el error sea menor que la tolerancia
 while (err > epsilon && iter < iterMax),
     %Calcula los residuos
     phi = restricciones(q,params);

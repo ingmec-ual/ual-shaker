@@ -1,6 +1,11 @@
+%En este caso la simulacion corresponde al mecanismo simple biela manivela,
+%pero en este caso las condiciones seran diferentes a las establecidas en
+%el problema cinematico. Debido a que no tenemos velocidad constante, si no
+%que el motor girara en un rango de angulos determinado.
+
 close all
 
-sim('Copy_of_SimulacionSimple');
+sim('SimulacionSimpleRangodeAngulos');
 
 theta=simout_ang.signals.values(:,1);
 for i=1:length (theta)

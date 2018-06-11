@@ -14,15 +14,15 @@ clear, clc, close all
 % 
 % Resolver(L1s,L2s,1,0,0,0);
 
-%Una vez hemos visto las posibles configuraciones de barras posibles,
-%elegimos una configuracion en concreto y estudiamos su comportamiento en
-%posicion, velocidad, aceleracion (cinemática) y par (analítico-dinámica)
-L1s = 4;
-L2s = 7;
+%Una vez se han visto las posibles configuraciones de barras posibles,
+%se elige una configuracion en concreto y se estudia su comportamiento en
+%posicion, velocidad, aceleracion (cinemática) y par (analítico)
+% L1s = 4;
+% L2s = 7;
+% 
+% Resolver(L1s,L2s,0,0,1,1);
 
-Resolver(L1s,L2s,0,0,1,1);
-
-%Realizamos una comparacion con metodos numéricos mediante dinamica (problema dinámico inverso), concretamente el
+%Se realiza una comparacion con metodos numéricos mediante dinamica, concretamente el
 %problema dinamico inverso, es necesario hacer diferenciacion con respecto
 %al anterior por que para este caso cambiamos las restricciones.
 % L1s = 4;
@@ -30,9 +30,12 @@ Resolver(L1s,L2s,0,0,1,1);
 % 
 % Resolver(L1s,L2s,0,1,0,0);
 
+%A continuacion se verán 3 llamadas a 3 archivos diferentes, cada uno de
+%ellos ejecutara un archivo de Simulink diferente, este obtendra sus parametros
+%y los representara.
 
 %ResolverSimple
-%ResolverCopy
+%ResolverSimpleRangodeAngulos
 %ResolverMesa
 
 

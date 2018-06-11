@@ -12,21 +12,22 @@ params.alpha = 0; % rad/s^2
 
 params.t = 0.005; %inicializamos
 
-% Introducimos las coordenadas iniciales del vector posicion (valores
+% Se introducen las coordenadas iniciales del vector posicion (valores
 % aleatorios aunque elegidos con cierto criterio)
 x1 = params.L1;
 y1 = params.L1*0.05;
 x2 = params.L1-params.L2;
 theta = 0;
 
-% Formamos el vector de coordenadas generalizadas
+% Se forma el vector de coordenadas generalizadas
 q = [x1; y1; x2; theta];
 
-% Hacemos los problemas de velocidad y aceleracion iniciales
+% Se hacen los problemas de velocidad y aceleracion iniciales
 v = probvelocidaddinamica(q,params);
-%a = probaceleracion(v,q,params);
+%a = probaceleracion(v,q,params); Se comenta por que se desea obtener su
+%valor
 
-% Para la simulacion cinematica, definimos como antes el tiempo=0,005 s
+% Para la simulacion cinematica, se define el tiempo=0,005 s
 if (haz_dibujo)
     figure
     xlim([-20,10])
@@ -35,15 +36,15 @@ if (haz_dibujo)
 end
 
 At = 0.005;
-% inicializamos un vector columna de las coordenadas que varian
+% se inicializa un vector columna de las coordenadas que varian
 N = 360;
 x1=zeros(N,1); y1=zeros(N,1); x2=zeros(N,1); theta=zeros(N,1); t=zeros(N,1);
 
-Vx2=zeros(N,1); %Creamos la matriz de tendra las velocidades del punto 2
+Vx2=zeros(N,1); %se crea la matriz de tendra las velocidades del punto 2
 acx1=zeros(N,1); acy1=zeros(N,1); acx2=zeros(N,1); actheta=zeros(N,1);
 lambda1 =zeros(N,1); lambda2=zeros(N,1); lambda3=zeros(N,1); par=zeros(N,1);
 
-%iteramos para representar el mecanismo
+%se itera para representar el mecanismo
 %secuencia_theta=load('nombre.txt');
 secuencia_theta=linspace(0,2*pi,N);
 for i=1:length(secuencia_theta),
@@ -53,13 +54,13 @@ for i=1:length(secuencia_theta),
     params.t = ti;
     q = ProbPosiciondinamica(q,params);
     v = probvelocidaddinamica(q,params);
-    %a = probaceleracion(v,q,params); Lo quitamos por que podremos
-    %comprobarlo con lo que obtenemos del main de cinematica
+    %a = probaceleracion(v,q,params); Se recuerda que se comenta por que se desea obtener su
+    %valor
     J = jacobdinamica(q,params);
     Jd = jacobderivadodinamica(v,q,params);
     [a, lambda] = probDinamico(q,v,params,J,Jd);
-        %Al llamar a esta funcion obtenemos el vector que nos dará las
-        %aceleraciones para poder compararlo con lo que obtenemos en el
+        %Al llamar a esta funcion se obtiene el vector que dará las
+        %aceleraciones para poder compararlo con lo que se obtiene en el
         %cinematico y ademas el par con lambda
     
     if (haz_dibujo)
@@ -73,15 +74,14 @@ for i=1:length(secuencia_theta),
     
     %Para la dinamica par habra que sacar que sacar tambien las lambdas
     %para poder plotearlas
-    %ya tenemos que a es una matriz de 4x1 y lambda igual
     
     acx1(i) = a(1) ; acy1(i)= a(2) ; acx2(i)= a(3) ; actheta(i) = a(4);
     lambda1(i) = lambda(1);lambda2(i) = lambda(2); lambda3(i) = lambda(3);
     parmalo(i) = lambda(4);
     
-    par (i) = parmalo(i)/(100^2); %esto lo hacemos para tener el par en N.m ya que hemos
-    %introducido kg, cm y s2, para pasar kg.cm/s^2 a N dividimos por 100 y
-    %para pasar el otro cm a m volvemos a dividir por 100
+    par (i) = parmalo(i)/(100^2); %esto se realiza para tener el par en N.m ya que se han
+    %introducido kg, cm y s2, para pasar kg.cm/s^2 a N se divide por 100 y
+    %para pasar el otro cm a m es preciso volver a dividir por 100
     
   
     

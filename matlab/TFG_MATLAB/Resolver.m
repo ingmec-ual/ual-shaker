@@ -3,10 +3,10 @@ function [] = Resolver (L1s,L2s,graficabarras,dinamica,graficascinematica,haz_di
 porcentaje = 5; %Valor de porcentaje para la zona lineal
 y2=0;  %Altura en el eje 'y' con respecto al origen (eje del motor)
 
-%Como vemos, podemos diferenciar muchas variables de entrada
-%graficabrras -> Obtenemos la grafica para las configuraciones de las barras
-%dinamica -> Si queremos hacer el problema de dinamica
-%graficascinematica -> Obtenemos las graficas de la simulacion cinematica
+%Se pueden diferenciar muchas variables de entrada
+%graficabarras -> Se obtiene la grafica para las configuraciones de las barras
+%dinamica -> Si se desea hacer el problema dinamico inverso
+%graficascinematica -> Se obtienen las graficas de la simulacion cinematica
 %haz_dibujo -> Simulacion cinematica del mecanismo
 
 Deltax2_all = zeros(length(L1s),length(L2s));
@@ -17,14 +17,14 @@ for L1i = 1:length(L1s)
         L1=L1s(L1i);
         L2=L2s(L2k);
         
-        if (dinamica == 0)  %LLamamos al main que para cinematica
+        if (dinamica == 0)  %main para cinematica
 
         [Vx2,theta,x2,params]=main(L1,L2,y2,haz_dibujo,graficascinematica);
             
             
             % TODO: Porcentaje wrt max.
-            %Lo que vamos a hacer es coger el maximo de la curva Vx2/w y le aplicamos el porcentaje 
-            %de ese maximo y vemos que rango de angulo tenemos, para luego ir
+            %Se coge el maximo de la curva Vx2/w y se le aplica el porcentaje 
+            %de ese maximo y se estudia que rango de angulo se ha obtenido, para luego ir
             %a la grafica de posicion del punto x2 y ver el margen de recorrido.
             %Para poder buscar asi que valores de L1 y L2 dan el mayor rango de
             %movimiento
@@ -45,7 +45,7 @@ for L1i = 1:length(L1s)
              fprintf('Se movera en el rango de angulos: [%f,%f]\n',thetamin,thetamax);
              
              
-             else %llamamos al main de dinamica
+             else %se llama al main de dinamica
                  
                 maindinamica(L1,L2,y2,0)
                  

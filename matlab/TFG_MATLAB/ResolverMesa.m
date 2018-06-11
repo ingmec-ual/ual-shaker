@@ -1,3 +1,6 @@
+%En este caso se han importado archivos .STL de Solidworks para simular asi
+%el movimiento de la mesa diseñada en el trabajo.
+
 close all
 
 sim('mesaparasimulink2');

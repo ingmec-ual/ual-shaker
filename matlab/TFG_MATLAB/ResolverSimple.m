@@ -1,3 +1,9 @@
+%En este caso se realizara una simulacion del mecanismo biela manivela
+%imitando las condiciones de la simulacion cinematica. Ademas obtendremos
+%una grafica del espectro de frecuencias realizada sobre los datos de
+%posicion para compararla con una de las mismas caracteristicas pero con el
+%movimiento restringido un rango determinado de angulos.
+
 close all
 
 sim('SimulacionSimple');
