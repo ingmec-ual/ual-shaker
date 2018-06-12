@@ -1,15 +1,15 @@
 function [ J ] = jacobdinamica(q,params)
-%definimos las coordenadas generalizadas
+%Se definen las coordenadas generalizadas
 x1=q(1);
 y1=q(2);
 x2=q(3);
 theta=q(4);
 
-%definimos las coordenas que no varían con el tiempo
+%Se definen las coordenas que no varían con el tiempo
 xA=0;
 yA=0;
 y2=params.y2;
-%creamos el jacobiano, siendo este la matriz formada por las derivadas
+%Se crea el jacobiano, siendo este la matriz formada por las derivadas
 %parciales de las ecuaciones de restricción respecto a cada una de las
 %coordenadas del vector q
 

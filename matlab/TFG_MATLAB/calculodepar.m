@@ -3,7 +3,7 @@ function [] = calculodepar(params)
     %Calculo del par motor (en función de theta)
 
     %theta = 0;
-    %Empezamos con el theta inicial y hara los siguientes calculos para cada
+    %Se empieza con el theta inicial y hara los siguientes calculos para cada
     %valor de theta comprendido entre [0º,360º]
 
     w = params.omega; %rad/s
@@ -11,7 +11,7 @@ function [] = calculodepar(params)
     L2 = params.L2; %cm
     L1 = L1/100; %m
     L2 = L2/100; %m
-    % m será la masa del cajon que de momento la suponemos fija y de valor
+    % m sera la masa del cajon se supone de valor
     % 6 kg ( para el motor más desfavorable)
     m = 6; %kg
     g = 9.8;  %m2/s
